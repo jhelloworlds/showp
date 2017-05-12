@@ -1,0 +1,34 @@
+.header {
+  width: 100%;
+  height: 70px;
+  background: #2D333A;
+  display: flex;
+}
+.rightIcon {
+  margin-right: 75px;
+  margin-left: auto;
+  width: 30px;
+  height: 18px;
+  align-self: center;
+  text-align: center;
+  color: #fff
+}
+.leftIcon {
+  margin-left: 75px;
+  padding-right: 22px;
+  width: 30px;
+  height: 18px;
+  align-self: center;
+  text-align: center;
+  color: #fff
+}
+.rightIcon, .leftIcon svg {
+  vertical-align: baseline!;
+}
+#searchText {
+  align-self: center;
+  margin-right: auto;
+  font-size: 16px;
+  color: #5B6672;
+  letter-spacing: 1px;
+}
