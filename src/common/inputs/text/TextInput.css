@@ -1,0 +1,28 @@
+.input-group {
+  margin:  20px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 500px; 
+}
+.input-group label {
+  font-size: 14px;
+  color: #5B6672;
+  letter-spacing: 1.17px;
+}
+.form-item {
+  display: flex;
+  border: none;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 20px 0px;
+  font-size: 20px;
+  color: #2D333A;
+}
+.input-group :focus {
+  outline: none;
+  border-width: 2px;
+  border-color: #00AACE;
+}
+input::placeholder {
+  padding: 20px 0px;
+}
+

@@ -11,7 +11,7 @@ const Header = ({ leftIcon, text, rightIcon }) => {
     </div>
   );
 };
-
+//TODO: replace search text field with text input component
 Header.propTypes = {
   leftIcon: PropTypes.element,
   text: PropTypes.string,
