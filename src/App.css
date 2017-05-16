@@ -1,5 +1,14 @@
 .container {
   padding-top: 20px;
-  width: 770px;
   margin: 0 auto;
+  overflow: hidden;
+}
+@media(min-width: 800px){
+  .container {
+    padding-top: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 770px;
+    min-height: 800px;
+  }
 }

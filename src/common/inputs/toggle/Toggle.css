@@ -1,0 +1,27 @@
+.toggle-boxes {
+  display: flex;
+  justify-content: space-between;
+}
+.toggle-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 337px;
+  height: 143px;
+  border: 1px solid #DDDDDD;
+  cursor: pointer;
+}
+.chosen {
+  border: 1px solid #00AACE;
+  color: #00AACE;
+} 
+.title-holder {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title-holder__text {
+  padding: 7.5px 0px;
+}
