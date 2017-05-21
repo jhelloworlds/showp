@@ -1,12 +1,13 @@
 .dropdown {
   max-height: 0px;
-  opacity: 0;
+  display: none;
   position: absolute;
   top:80px;
   left: 1px;
   right: 1px;
 }
 .active {
+  display: block;
   max-height: 300px;
   opacity: 1;
 }

@@ -8,9 +8,11 @@ class Toggle extends Component {
     this.state = {
       selected: 1
     }
+    this.onClick = this.onClick.bind(this)
   }
   onClick(i){
-   this.setState({ selected: i })
+    console.log(i)
+    this.setState({ selected: i })
   }
 
   render() {

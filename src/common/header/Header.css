@@ -13,7 +13,8 @@
   width: 30px;
   height: 18px;
   align-self: center;
-  color: #fff
+  color: #fff;
+  cursor: pointer;
 }
 .leftIcon {
   display: flex;

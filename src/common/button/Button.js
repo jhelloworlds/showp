@@ -4,11 +4,11 @@ import './Button.css'
 
 const Button = ({ text, fill, icon, onClick }) => {
   return (
-    <div className={fill ? 'button fill' : 'button noFill'}>
+    <button className={fill ? 'button fill' : 'button noFill'} onClick={onClick} >
       <span className={icon ? 'icon' : 'hidden'} >+</span>
       <span className='text'>{text}</span>
       <span className={icon ? 'icon' : 'hidden'}></span>
-    </div>
+    </button>
   );
 };
 

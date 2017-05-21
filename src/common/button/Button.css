@@ -1,18 +1,20 @@
 .button {
   display: flex;
   justify-content: space-around;
-  width: 345px;
+  width: 295px;
   height: 65px;
   align-items: center;
-  font-size: 18px;
-  letter-spacing: 0px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 .fill {
   background: #00AACE;
   color: #FFFFFF;
+  border: 0px;
 }
 .noFill {
-  background: #FFFFFF;
+  background: transparent;
   color: #00AACE;
   border: 1px solid #00AACE
 }

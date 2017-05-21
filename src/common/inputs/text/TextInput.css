@@ -1,8 +1,7 @@
 .input-group {
-  margin:  20px 0px;
+  margin-bottom:  20px;
   display: flex;
   flex-direction: column;
-  width: 500px;
   position: relative; 
 }
 .input-group label {
@@ -27,3 +26,18 @@ input::placeholder {
   padding: 20px 0px;
 }
 
+.reverse {
+  width: 295px;
+  display: flex;
+  border: none;
+  background: #2D333A;
+  border-bottom: 1px solid #00AACE;
+  padding: 20px 0px;
+  font-size: 20px;
+  color: #fff;
+}
+.reverse::placeholder {
+  font-size:  16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
