@@ -1,4 +1,5 @@
-import {SET_CURRENT_USER} from './types'
+import { SET_CURRENT_USER } from './types'
+import { browserHistory } from 'react-router'
 import service from '../utils/service'
 
 export function userLoginRequest (userData) {
@@ -16,7 +17,7 @@ export function userLogOut (token){
   return dispatch => {
     service.delete('/auth/doctor?token=' + token)
     localStorage.removeItem('token')
-    document.location = '/login'
+    browserHistory.push('/login')
     return false
   }
 }

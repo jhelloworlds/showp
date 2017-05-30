@@ -3,6 +3,7 @@ import moment from 'moment'
 import { data } from '../utils/fake'
 import FaAngle from 'react-icons/lib/fa/angle-right'
 import Button from '../common/button/Button'
+import { browserHistory } from 'react-router' 
 import './List.css'
 
 class List extends Component {
@@ -11,6 +12,9 @@ class List extends Component {
     this.state = {
       results: data
     }
+  }
+  onClick() {
+    browserHistory.push('/form')
   }
   render() {
     const results = this.state.results.map((patient, i) => {
@@ -47,7 +51,7 @@ class List extends Component {
           or
         </div>
         <div id='create-patient' >
-          <Button text='Create New Patient' fill icon />
+          <Button text='Create New Patient' fill icon onClick={this.onClick} />
         </div>
       </div>
     )
