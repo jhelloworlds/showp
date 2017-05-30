@@ -12,7 +12,7 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
@@ -28,17 +28,16 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault()
-    this.props.userLoginRequest(this.state).then(() =>{
+    this.props.userLoginRequest(this.state)
       this.context.router.push('/')
       this.props.toggleMenu()
-    }, (err) => console.log(err))
   }
   render() {
     return (
       <div className='login' >
         <div className='login__title' > Physician Sing In </div>
         <div className='login__box'>
-          <TextInput stl='reverse' type='username' placeholder='Username' value={this.state.username} onChange={this.onChange} onKey={this.onKey} />
+          <TextInput stl='reverse' type='email' placeholder='Email' value={this.state.email} onChange={this.onChange} onKey={this.onKey} />
           <TextInput stl='reverse' type='password' placeholder='Password' value={this.state.password} onChange={this.onChange} onKey={this.onKey} />
           <Button text='SIGN IN' onClick={this.onSubmit} onKey={this.onKey} />
           <div id='login__bottom-text-box'>

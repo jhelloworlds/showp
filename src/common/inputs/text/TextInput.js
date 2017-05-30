@@ -14,7 +14,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   type: PropTypes.string,
-  style: PropTypes.string,
+  stl: PropTypes.string,
   onChange: PropTypes.func,
   onKey: PropTypes.func
 };

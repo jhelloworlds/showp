@@ -1,6 +1,6 @@
 .container {
   padding-top: 20px;
-  margin: 0 auto;
+  margin: 0 0;
   overflow: hidden;
 }
 @media(min-width: 800px){
@@ -9,6 +9,12 @@
     margin: 0 auto;
     overflow: hidden;
     width: 770px;
-    min-height: 500px;
+    /*min-height: 500px;*/
+    flex: 1;
   }
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }

@@ -1,2 +1,3 @@
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 export const TOGGLE_MENU_ACTIVE = 'TOGGLE_MENU_ACTIVE'
+export const SET_QUERY = 'SET_QUERY'

@@ -1,20 +1,23 @@
 import {SET_CURRENT_USER} from './types'
-//import axios from 'axios'
+import service from '../utils/service'
 
 export function userLoginRequest (userData) {
   return dispatch => {
     localStorage.setItem('token', 'received token')
-    return Promise.resolve(true)
-    // return axios.post('/auth/doctor', userData)
-    // TODO: add axios request 
-    // TODO: dispatch SET_CURRENT_USER with token decrypted data?
+    service.post('/auth/doctor', {email: userData.email, password: userData.password}).then(
+      (response) => {
+        // if(response.status === 200 && response.data.result) 
+        dispatch(setCurrentUser({email: 'some@mail.com', token: response.data.result}))
+      })
   }
 }
 
-export function userLogOut (){
+export function userLogOut (token){
   return dispatch => {
+    service.delete('/auth/doctor?token=' + token)
     localStorage.removeItem('token')
-    return true
+    document.location = '/login'
+    return false
   }
 }
 

@@ -1,0 +1,57 @@
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.patient-list__item {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 20px 0px;
+}
+.patient-list__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.patient-list__left__text {
+  font-size: 20px;
+  padding: 5px;
+  color: #00AACE;
+}
+.patient-list__left__date {
+  font-size: 20px;
+  padding: 5px;
+}
+.patient-list__middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  flex: 1;
+}
+.patient-list__middle_text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.patient-list__right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #2D333A;
+  font-size: 30px;
+}
+#or {
+  font-size: 18px;
+  color: #DDDDDD;
+  display: flex;
+  justify-content: center;
+  margin: 60px 0px;
+}
+#create-patient {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

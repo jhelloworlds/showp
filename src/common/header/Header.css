@@ -30,9 +30,9 @@
 .rightIcon, .leftIcon svg {
   vertical-align: baseline!;
 }
-#searchText {
-  align-self: center;
-  margin-right: auto;
+.header div {
+  justify-content: center;
+  margin: 0;
   font-size: 16px;
   color: #5B6672;
   letter-spacing: 1px;
