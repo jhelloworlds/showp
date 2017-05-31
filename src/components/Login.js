@@ -4,8 +4,6 @@ import Button from '../common/button/Button'
 import FaLock from 'react-icons/lib/fa/lock'
 import { connect } from 'react-redux'
 import { userLoginRequest } from '../actions/auth'
-import { toggleMenu } from '../actions/menu'
-import { PropTypes } from 'prop-types'
 import './Login.css'
 
 class Login extends Component {
@@ -24,13 +22,11 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
   onKey(e) {
-    if(e.charCode === 13) this.onSubmit(e)
+    if (e.charCode === 13) this.onSubmit(e)
   }
   onSubmit(e) {
     e.preventDefault()
     this.props.userLoginRequest(this.state)
-      this.context.router.push('/')
-      this.props.toggleMenu()
   }
   render() {
     return (
@@ -50,9 +46,5 @@ class Login extends Component {
   }
 }
 
-Login.contextTypes = {
-  router: PropTypes.object.isRequired
-}
-
-export default connect(null, { userLoginRequest, toggleMenu })(Login);
+export default connect(null, { userLoginRequest })(Login);
 

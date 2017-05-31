@@ -2,6 +2,7 @@
   padding-top: 20px;
   margin: 0 0;
   overflow: hidden;
+  flex: 1;
 }
 @media(min-width: 800px){
   .container {

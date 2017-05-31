@@ -3,7 +3,7 @@ import axios from 'axios'
 class Service {
   constructor() {
     const service = axios.create({
-      baseURL: 'http://api.domain.com'
+      baseURL: 'https://service.stage.rxredefined.com/'
     })
     const token = localStorage.getItem('token') || ''
     service.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -19,10 +19,13 @@ class Service {
     switch (error.status) {
       case 401:
         localStorage.removeItem('token')
-        this.redirectTo(document, '/login')
+        console.log('unauthorized')
+        // this.redirectTo(document, '/login')
         break;
       default:
-        this.redirectTo(document, '/')
+        console.log('other error :', error)
+        console.log('error status code :', error.status)
+        // this.redirectTo(document, '/')
         break;
     }
     return Promise.reject(error)

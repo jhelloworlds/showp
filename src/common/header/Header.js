@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { toggleMenu } from '../../actions/menu'
 import TextInput from '../inputs/text/TextInput'
-import service from '../../utils/service'
-import { browserHistory } from 'react-router'
-import { setQuery } from '../../actions/patient'
+import { searchPatient } from '../../actions/patient'
 import './Header.css'
 
 class Header extends Component {
@@ -13,16 +11,14 @@ class Header extends Component {
     super(props)
     this.state = {
       doctor: {},
-      search: this.props.query
+      search: ''
     }
     this.onChange = this.onChange.bind(this)
     this.onKey = this.onKey.bind(this)
   }
   onKey(e) {
     if (e.charCode === 13) {
-      service.get('/office/patient/search' + this.state.search + '&token=' + this.props.doctor.token)
-      this.props.setQuery(this.state.search)
-      browserHistory.push('/list')
+      this.props.searchPatient(this.state.search)
     }
   }
   onChange(e) {
@@ -47,12 +43,11 @@ Header.propTypes = {
 }
 const mapStateToProps = (state) => {
   return {
-    doctor: state.user,
-    query: state.patient.query
+    doctor: state.user
   }
 }
 
-export default connect(mapStateToProps, { toggleMenu, setQuery })(Header)
+export default connect(mapStateToProps, { toggleMenu, searchPatient })(Header)
 
 
 

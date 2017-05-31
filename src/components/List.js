@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import { data } from '../utils/fake'
 import FaAngle from 'react-icons/lib/fa/angle-right'
 import Button from '../common/button/Button'
 import { browserHistory } from 'react-router' 
+import { connect } from 'react-redux'
 import './List.css'
 
 class List extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      results: data
+      results: this.props.array
     }
   }
   onClick() {
@@ -47,9 +47,9 @@ class List extends Component {
         <div className='patient-list' >
           {results}
         </div>
-        <div id='or' >
+        {results.lenght > 0 ? <div id='or' >
           or
-        </div>
+        </div> : null }
         <div id='create-patient' >
           <Button text='Create New Patient' fill icon onClick={this.onClick} />
         </div>
@@ -58,4 +58,10 @@ class List extends Component {
   }
 }
 
-export default List;
+const mapStateToProps = (state) => {
+  return {
+    array: state.patient.list.array,
+  }
+}
+
+export default connect(mapStateToProps)(List)

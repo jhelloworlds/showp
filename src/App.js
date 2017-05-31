@@ -27,11 +27,11 @@ class App extends Component {
     return (
       <div id='app' >
         <Header text="Patient's Name" leftIcon={<FaSearch />} rightIcon={<FaBars />} />
-        <div className='container'>
+        {/*<div className='container'>*/}
           <Menu active={this.props.menu.active} logOut={this.logOut} onClose={this.toggleMenu} />
           {this.props.children}
         </div>
-      </div>
+      // </div>
     );
   }
 }

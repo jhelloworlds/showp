@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { PropTypes } from 'prop-types'
 import './Main.css'
 
 class Main extends Component {
@@ -10,10 +9,6 @@ class Main extends Component {
       </div>
     );
   }
-}
-
-Main.contextTypes = {
-  router: PropTypes.object.isRequired
 }
 
 export default Main
