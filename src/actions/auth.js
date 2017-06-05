@@ -10,8 +10,8 @@ export function userLoginRequest(userData) {
         if (response.status === 200 && response.data.result) {
           dispatch(setCurrentUser({ email: userData.email, token: response.data.result }))
           localStorage.setItem('token', response.data.result)
+          dispatch(toggleMenu())
           browserHistory.push('/')
-          toggleMenu()
         }
       })
   }
@@ -22,6 +22,7 @@ export function userLogOut(token) {
     service.delete('/auth/doctor?token=' + token)
     localStorage.removeItem('token')
     dispatch(setCurrentUser({}))
+    dispatch(toggleMenu())
     browserHistory.push('/login')
     return false
   }
@@ -29,6 +30,7 @@ export function userLogOut(token) {
 
 export function verifyToken(token) {
   return dispatch => {
+    console.log('verifyToken')
     service.get('/auth/doctor?token=' + token ).then(
       (response) => {
         if (response.status === 200 && response.data.result && response.data.result.doctor ) {

@@ -1,6 +1,5 @@
 .create-patient  {
-  width: 100%;
-  margin: 20px 0px;
+  margin: 20px 20px;
 }
 .create-patient__row {
   display: flex;
@@ -25,4 +24,7 @@
 }
 #create-patient__gender {
   flex:  2;
+}
+.full-width {
+  width: 100%;
 }

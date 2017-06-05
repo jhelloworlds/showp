@@ -16,8 +16,13 @@ class Service {
     return response
   }
   handleError = (error) => {
-    switch (error.status) {
+    switch (error.response.status) {
       case 401:
+        localStorage.removeItem('token')
+        console.log('unauthorized')
+        // this.redirectTo(document, '/login')
+        break;
+        case 400:
         localStorage.removeItem('token')
         console.log('unauthorized')
         // this.redirectTo(document, '/login')
@@ -46,6 +51,14 @@ class Service {
   }
   delete(path) {
     return this.service.delete(path)
+  }
+  put(path, payload) {
+    return this.service.request({
+      method: 'PUT',
+      url: path,
+      responseType: 'json',
+      data: payload
+    })
   }
 }
 

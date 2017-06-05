@@ -1,15 +1,23 @@
 .toggle-boxes {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0px 20px;
 }
 .toggle-box {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 337px;
+  /*width: 337px;*/
+  flex: 0 0 48%;
+  margin-right: auto;
   height: 143px;
   border: 1px solid #DDDDDD;
   cursor: pointer;
+  margin-top: 20px;
 }
 .chosen {
   border: 1px solid #00AACE;
@@ -21,7 +29,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .title-holder__text {
-  padding: 7.5px 0px;
+  padding: 7.5px 30px;
+}
+.toggle-box.disabled {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*width: 337px;*/
+  flex: 0 0 48%;
+  margin-right: auto;
+  height: 143px;
+  border: 1px solid #DDDDDD;
+  cursor: pointer;
+  margin-top: 20px;
+  color: #DDDDDD;
 }

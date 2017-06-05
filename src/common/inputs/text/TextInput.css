@@ -17,6 +17,9 @@
   font-size: 20px;
   color: #2D333A;
 }
+.error {
+  border-bottom: 1px solid red;
+}
 .input-group :focus {
   outline: none;
   border-width: 2px;

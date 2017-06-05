@@ -1,0 +1,29 @@
+.diagnosis {
+  display: flex;
+  flex-direction: column;
+}
+.diagnosis__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 40px 0px;
+  min-height: 60px;
+}
+#diagnosis__title-first {
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 20px;
+}
+.diagnosis__title__header {
+  font-size: 20px;
+}
+.diagnosis__title__subtitle {
+  font-size: 14px;
+}
+#diagnosis__button {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}

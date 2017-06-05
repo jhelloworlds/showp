@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import CreatePatient from './CreatePatient'
+import Diagnosis from './Diagnosis'
+import Justifications from './Justifications'
+import Product from './Product'
+import SKU from './SKU'
 import { connect } from 'react-redux'
 import './Wizard.css'
 
@@ -17,8 +21,13 @@ class Wizard extends Component {
     const content = (() => {
       switch (this.state.step) {
         case 1:
-          return <div>Hello</div>
-          // return <Diagnosis />
+          return <Diagnosis />
+        case 2: 
+          return <Justifications />
+        case 3:
+          return <Product />
+        case 4:
+          return <SKU />
         default:
           return <CreatePatient />
       }

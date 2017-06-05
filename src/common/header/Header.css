@@ -27,6 +27,19 @@
   align-self: center;
   color: #fff
 }
+.leftAngle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 75px;
+  padding-right: 22px;
+  width: 30px;
+  height: 18px;
+  align-self: center;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
 .rightIcon, .leftIcon svg {
   vertical-align: baseline!;
 }
@@ -36,4 +49,10 @@
   font-size: 16px;
   color: #5B6672;
   letter-spacing: 1px;
+}
+#header__last-name {
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+  align-self: center;
 }

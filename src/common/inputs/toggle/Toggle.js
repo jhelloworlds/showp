@@ -6,24 +6,33 @@ class Toggle extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: 1
+      selected: this.props.selected || 0
     }
     this.onClick = this.onClick.bind(this)
   }
-  onClick(i){
-    console.log(i)
+  onClick(i) {
     this.setState({ selected: i })
   }
 
   render() {
-    const { options } = this.props
+    const { options, onChange } = this.props
     const boxes = options.map((box, i) => {
-      return <div key={'box' + i} onClick={() => this.onClick(i+1)} className={i + 1 === this.state.selected ? 'toggle-box chosen' : 'toggle-box'} >
-        <div className='title-holder'>
-          <div className='title-holder__text'>{box.title}</div>
-          {box.subtitle && <div className='title-holder__text'>{box.subtitle}</div>}
+      if (box.justified === undefined || box.justified === true) {
+        return <div key={'box' + i} onClick={() => { this.onClick(i); onChange(i) }} className={i === this.state.selected ? 'toggle-box chosen' : 'toggle-box'} >
+          <div className='title-holder'>
+            <div className='title-holder__text'>{box.title}</div>
+            {box.subtitle && <div className='title-holder__text'>{box.subtitle}</div>}
+          </div>
         </div>
-      </div>
+      } else {
+        return <div key={'box' + i} onClick={() => null } className={'toggle-box disabled'} >
+          <div className='title-holder'>
+            <div className='title-holder__text'>{box.title}</div>
+            {box.subtitle && <div className='title-holder__text'>{box.subtitle}</div>}
+          </div>
+        </div>
+      }
+
     })
     return <div className='toggle-boxes'>
       {boxes}
@@ -46,9 +55,11 @@ Toggle.defaultProps = {
 Toggle.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired
+    subtitle: PropTypes.string.isRequired,
+    justified: PropTypes.bool
   })),
-  selected: PropTypes.number.isRequired
+  selected: PropTypes.number.isRequired,
+  onChange: PropTypes.func
 };
 
 export default Toggle;
