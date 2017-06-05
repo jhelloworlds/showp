@@ -2,6 +2,7 @@ import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_JUSTIFICATIONS, SET_DIAGNOSIS_SELECTED,
   SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION
 } from '../actions/types'
+import { perDay } from '../utils/perDay'
 
 const initialState = {
   step: 0,
@@ -17,15 +18,22 @@ const initialState = {
   products: {
     read: [],
     selected: {
-      index: 0,
+      index: -1,
       item: {}
     }
   },
   SKU: {
     read: [],
     selected: {
-      index: 0,
+      index: -1,
       item: {}
+    }
+  },
+  freq: {
+    read: perDay,
+    selected: {
+      index: 1,
+      quantity: 2
     }
   }
 }
@@ -54,10 +62,10 @@ export function wizard(state = initialState, action = {}) {
       const read = [...action.payload]
       const products = Object.assign({}, state.products, { read: read })
       return Object.assign({}, state, { products: products })
-    case SET_PRODUCTS_SELECTED: 
+    case SET_PRODUCTS_SELECTED:
       const selected = Object.assign({}, state.products.selected, { index: action.payload.index, item: action.payload.item })
-      const prods = Object.assign({}, state.products, { selected: selected } )
-      return Object.assign({}, state, { products: prods } )
+      const prods = Object.assign({}, state.products, { selected: selected })
+      return Object.assign({}, state, { products: prods })
     case SET_SKU:
       const readSKU = [...action.payload]
       const SKU = Object.assign({}, state.SKU, { read: readSKU })
@@ -69,3 +77,5 @@ export function wizard(state = initialState, action = {}) {
     default: return state
   }
 }
+
+

@@ -20,15 +20,15 @@ class Toggle extends Component {
       if (box.justified === undefined || box.justified === true) {
         return <div key={'box' + i} onClick={() => { this.onClick(i); onChange(i) }} className={i === this.state.selected ? 'toggle-box chosen' : 'toggle-box'} >
           <div className='title-holder'>
-            <div className='title-holder__text'>{box.title}</div>
-            {box.subtitle && <div className='title-holder__text'>{box.subtitle}</div>}
+            <div className='title-holder__title'>{box.title}</div>
+            {box.subtitle && <div className='title-holder__subtitle'>{box.subtitle}</div>}
           </div>
         </div>
       } else {
         return <div key={'box' + i} onClick={() => null } className={'toggle-box disabled'} >
           <div className='title-holder'>
-            <div className='title-holder__text'>{box.title}</div>
-            {box.subtitle && <div className='title-holder__text'>{box.subtitle}</div>}
+            <div className='title-holder__title'>{box.title}</div>
+            {box.subtitle && <div className='title-holder__subtitle'>{box.subtitle}</div>}
           </div>
         </div>
       }

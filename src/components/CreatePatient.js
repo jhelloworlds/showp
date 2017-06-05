@@ -94,6 +94,8 @@ class CreatePatiet extends Component {
                 onChange={this.handleChange}
                 className='form-item full-width'
                 dateFormat='DD-MM-YYYY'
+                popoverAttachment='top right'
+                popoverTargetAttachment='bottom right'
               />
             </div>
           </div>

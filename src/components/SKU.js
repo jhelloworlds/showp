@@ -35,7 +35,7 @@ class SKU extends Component {
   render() {
     const { product, SKU } = this.props
     const SKUs = SKU.map((item) => {
-      return { title: item.name }
+      return { title: item.name, subtitle: '' }
     })
     return (
       <div className='SKU' >

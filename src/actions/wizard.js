@@ -168,7 +168,6 @@ export function submitSKU(SKU) {
     const skuId = getState().wizard.SKU.selected.item.id
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, product_sku_id: skuId }
-    console.log(payload)
     service.put('/office/prescription', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {

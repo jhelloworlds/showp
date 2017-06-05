@@ -31,7 +31,7 @@
   align-items: center;
   text-align: center;
 }
-.title-holder__text {
+.title-holder__title .title-holder__subtitle {
   padding: 7.5px 30px;
 }
 .toggle-box.disabled {
