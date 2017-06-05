@@ -38,9 +38,10 @@ class Justifications extends Component {
     if (selected) {
       let index
       for (let i = 0; i < this.state.justifications.active.length; i++) {
-        if (this.state.justifications.active[i] === id) index = i; break
+        if (this.state.justifications.active[i] === id) index = i;
       }
       const arr = [...this.state.justifications.active]
+      
       arr.splice(index, 1)
       const just = Object.assign({}, this.state.justifications, { active: arr })
       this.setState({

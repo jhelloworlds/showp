@@ -32,6 +32,9 @@
   text-align: center;
   color: #2D333A;
 }
+.chosen .title-holder {
+  color: #00AACE;
+}
 .title-holder__title, .title-holder__subtitle {
   padding: 10px 30px;
 }
