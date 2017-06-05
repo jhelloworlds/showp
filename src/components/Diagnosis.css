@@ -16,14 +16,21 @@
 }
 .diagnosis__title__header {
   font-size: 20px;
+  color: #2D333A;
+  padding-bottom: 12px;
 }
 .diagnosis__title__subtitle {
   font-size: 14px;
+  color: #2D333A;
 }
 #diagnosis__button {
-  margin: 20px 0px;
+  margin: 75px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 60px;
+}
+#diagnosis__button  button {
+  width: 378px;
+  height: 66px;
 }

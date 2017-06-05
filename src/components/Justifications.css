@@ -11,9 +11,12 @@
 }
 .justifications__header__title {
   font-size: 20px;
+  color: #2D333A;
+  padding-bottom: 12px;
 }
 .justifications__header__subtitle {
-  font-size: 16px;
+  font-size: 14px;
+  color: #2D333A;
 }
 .justifications__list {
   display: flex;
@@ -71,9 +74,11 @@
   border-bottom: 15px solid transparent;
 }
 #justifications__button  {
-  margin: 20px 0px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 60px;
+  margin: 35px 0px;
+}
+#justifications__button button {
+  width: 378px;
+  height: 66px;
 }
