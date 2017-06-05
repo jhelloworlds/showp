@@ -1,8 +1,7 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_DIAGNOSIS_SELECTED, SET_JUSTIFICATIONS,
-  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED
+  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION
 } from '../actions/types'
-import { setPatient } from './patient'
 import service from '../utils/service'
 
 export function incrementStep() {
@@ -39,6 +38,12 @@ export function setActiveJustifications(justs) {
     payload: justs
   }
 }
+export function setPrescription(presc) {
+  return {
+    type: SET_PRESCRIPTION,
+    payload: presc
+  }
+}
 export function setProducts(prods) {
   return {
     type: SET_PRODUCTS,
@@ -49,6 +54,18 @@ export function setProductsSelected(prods) {
   return {
     type: SET_PRODUCTS_SELECTED,
     payload: prods
+  }
+}
+export function setSKU(skus) {
+  return {
+    type: SET_SKU,
+    payload: skus
+  }
+}
+export function setSKUSelected(sku) {
+  return {
+    type: SET_SKU_SELECTED,
+    payload: sku
   }
 }
 export function getDiagnosisOptions() {
@@ -70,8 +87,7 @@ export function getPrescription(selected) {
     service.post('/office/prescription', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
-          const patient = Object.assign({}, getState().patient, { prescription: response.data.result })
-          dispatch(setPatient(patient))
+          dispatch(setPrescription(response.data.result))
           const payload = {}
           payload.prescription_id = response.data.result.id
           payload.diagnosis = [selected.primary, selected.secondary]
@@ -131,5 +147,34 @@ export function submitProducts(prods) {
   return (dispatch) => {
     dispatch(setProductsSelected(prods))
     dispatch(incrementStep())
+  }
+}
+export function getSKU() {
+  return (dispatch, getState) => {
+    const token = getState().user.token
+    let productId = getState().wizard.products.selected.item.id
+    service.get('/office/product/sku?token=' + token + '&product_id=' + productId).then(
+      (response) => {
+        if (response.status === 200 && response.data.result) {
+          dispatch(setSKU(response.data.result))
+        }
+      })
+  }
+}
+export function submitSKU(SKU) {
+  return (dispatch, getState) => {
+    dispatch(setSKUSelected(SKU))
+    const token = getState().user.token
+    const skuId = getState().wizard.SKU.selected.item.id
+    const prescription_id = getState().wizard.prescription.id
+    const payload = { prescription_id: prescription_id, token: token, product_sku_id: skuId }
+    console.log(payload)
+    service.put('/office/prescription', payload).then(
+      (response) => {
+        if (response.status === 200 && response.data.result) {
+          dispatch(incrementStep())
+        }
+      }
+    )
   }
 }

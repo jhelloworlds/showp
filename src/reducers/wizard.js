@@ -1,6 +1,6 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_JUSTIFICATIONS, SET_DIAGNOSIS_SELECTED,
-  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED
+  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION
 } from '../actions/types'
 
 const initialState = {
@@ -20,6 +20,13 @@ const initialState = {
       index: 0,
       item: {}
     }
+  },
+  SKU: {
+    read: [],
+    selected: {
+      index: 0,
+      item: {}
+    }
   }
 }
 
@@ -29,6 +36,8 @@ export function wizard(state = initialState, action = {}) {
       return Object.assign({}, state, { step: state.step + 1 })
     case DECREMENT_STEP:
       return Object.assign({}, state, { step: state.step - 1 })
+    case SET_PRESCRIPTION:
+      return Object.assign({}, state, { prescription: action.payload })
     case SET_DIAGNOSIS_OPTIONS:
       const diagnosis = Object.assign({}, state.diagnosis, { options: action.payload })
       return Object.assign({}, state, { diagnosis: diagnosis })
@@ -49,6 +58,14 @@ export function wizard(state = initialState, action = {}) {
       const selected = Object.assign({}, state.products.selected, { index: action.payload.index, item: action.payload.item })
       const prods = Object.assign({}, state.products, { selected: selected } )
       return Object.assign({}, state, { products: prods } )
+    case SET_SKU:
+      const readSKU = [...action.payload]
+      const SKU = Object.assign({}, state.SKU, { read: readSKU })
+      return Object.assign({}, state, { SKU: SKU })
+    case SET_SKU_SELECTED:
+      const selectedSKU = { index: action.payload.index, item: action.payload.item }
+      const sku = Object.assign({}, state.SKU, { selected: selectedSKU })
+      return Object.assign({}, state, { SKU: sku })
     default: return state
   }
 }

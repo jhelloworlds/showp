@@ -4,6 +4,7 @@ import Diagnosis from './Diagnosis'
 import Justifications from './Justifications'
 import Product from './Product'
 import SKU from './SKU'
+import Freq from './Freq'
 import { connect } from 'react-redux'
 import './Wizard.css'
 
@@ -28,6 +29,8 @@ class Wizard extends Component {
           return <Product />
         case 4:
           return <SKU />
+        case 5: 
+          return <Freq />
         default:
           return <CreatePatient />
       }
