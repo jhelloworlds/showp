@@ -13,7 +13,11 @@ class Toggle extends Component {
   onClick(i) {
     this.setState({ selected: i })
   }
-
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selected: nextProps.selected
+    })
+  }
   render() {
     const { options, onChange } = this.props
     const boxes = options.map((box, i) => {
@@ -25,7 +29,7 @@ class Toggle extends Component {
           </div>
         </div>
       } else {
-        return <div key={'box' + i} onClick={() => null } className={'toggle-box disabled'} >
+        return <div key={'box' + i} onClick={() => null} className={'toggle-box disabled'} >
           <div className='title-holder'>
             <div className='title-holder__title'>{box.title}</div>
             {box.subtitle && <div className='title-holder__subtitle'>{box.subtitle}</div>}

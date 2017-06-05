@@ -1,6 +1,6 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_JUSTIFICATIONS, SET_DIAGNOSIS_SELECTED,
-  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION
+  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ
 } from '../actions/types'
 import { perDay } from '../utils/perDay'
 
@@ -74,6 +74,9 @@ export function wizard(state = initialState, action = {}) {
       const selectedSKU = { index: action.payload.index, item: action.payload.item }
       const sku = Object.assign({}, state.SKU, { selected: selectedSKU })
       return Object.assign({}, state, { SKU: sku })
+    case SET_FREQ:
+      const freq = Object.assign({}, state.freq, { selected: { index: action.payload.index, quantity: action.payload.quantity } })
+      return Object.assign({}, state, { freq: freq })
     default: return state
   }
 }

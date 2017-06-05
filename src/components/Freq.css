@@ -1,0 +1,69 @@
+.freq .title-holder__title {
+  font-size: 36px;
+  color: #2D333A;
+}
+.freq .title-holder__subtitle {
+  font-size: 14px;
+  color: #2D333A;
+}
+.freq .chosen .title-holder__title {
+  font-size: 36px;
+  color: #00AACE;
+}
+.freq .chosen .title-holder__subtitle {
+  font-size: 14px;
+  color: #1FB5d4;
+}
+.freq__calc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+.freq__calc .select__value {
+  margin-left: auto;
+}
+.freq__calc .form-item#small-form-item{
+  width: 105px;
+  font-size: 32px;
+}
+.freq__calc label {
+  text-align: center;
+}
+.freq__form-item {
+  width: 105px;
+  font-size: 32px;
+  color: #AAAAAA;
+  height: 100%;
+}
+.freq__form-item.form-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 0px  35px;
+  margin-bottom: 5px;
+}
+.freq__ico {
+  font-size: 24px;
+  color: #DDDDDD;
+  letter-spacing: 2px;
+}
+.freq__item.form-item {
+  width: 105px;
+  font-size: 32px;
+  color: #AAAAAA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.freq__button {
+  display: flex;
+  justify-content: center;
+  margin: 35px 0px;
+}
+.freq__button button {
+  width: 378px;
+  height: 66px;
+}

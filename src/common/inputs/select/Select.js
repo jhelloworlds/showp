@@ -9,7 +9,7 @@ class TextInput extends Component {
     this.state = {
       value: '',
       selected: false,
-      selectedIndex: 0,
+      selectedIndex: this.props.selected || 0,
       active: false
     }
     this.onClick = this.onClick.bind(this)
@@ -17,12 +17,17 @@ class TextInput extends Component {
   }
   onClick(e) {
     this.setState({ selectedIndex: e.target.value, active: false, value: e.target.textContent })
-    this.props.onChange && this.props.onChange()
+    this.props.onChange && this.props.onChange(e.target.value, this.props.options[e.target.value])
   }
   toggle() {
     this.setState({ active: !this.state.active })
   }
-
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectedIndex: nextProps.selected,
+      value: this.props.options[nextProps.selected]
+    })
+  }
   render() {
     const { label, options } = this.props
     const list = options.map((option, i) => {
@@ -34,7 +39,7 @@ class TextInput extends Component {
       <div className='input-group' >
         <label>{label.toUpperCase()}</label>
         <div className='form-item' id='small-form-item' onClick={this.toggle}>
-          {this.state.value || options[0]} <span id='sort-icon' ><FaSort /></span>
+          <span className='select__value'> {this.state.value || this.props.options[this.props.selected] || options[0]} </span> <span id='sort-icon' ><FaSort /></span>
         </div>
         <div className={this.state.active ? 'dropdown active' : 'dropdown inactive'}>
           <ul>
@@ -55,7 +60,8 @@ TextInput.defaultProps = {
 TextInput.propTypes = {
   label: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  selected: PropTypes.number
 };
 
 export default TextInput;

@@ -4,11 +4,14 @@
   align-items: center;
   margin-top: 20px;
   border-bottom: 1px solid #DDDDDD;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }
 .product__header__title {
   font-size: 20px;
+  color: #2D333A;
+  padding-bottom: 12px;
 }
 .product__header__subtitle {
-  font-size: 16px;
+  font-size: 14px;
+  color: #2D333A;
 }
