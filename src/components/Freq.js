@@ -42,6 +42,7 @@ class Freq extends Component {
     this.props.submitFreq(this.state.selected)
   }
   render() {
+    console.log(this.state.selected.quantity)
     const { product, freq } = this.props
     return (
       <div className='freq' >

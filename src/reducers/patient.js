@@ -1,4 +1,4 @@
-import { SET_QUERY } from '../actions/types'
+import { SET_LIST } from '../actions/types'
 import { SET_PATIENT } from '../actions/types'
 
 const initialState = {
@@ -25,11 +25,11 @@ const initialState = {
 
 export function patient(state = initialState, action = {}) {
   switch (action.type) {
-    case SET_QUERY:
-      const list = Object.assign({}, state.list, { query: action.query })
+    case SET_LIST:
+      const list = Object.assign({}, state.list, { query: action.query,  array: action.array })
       return Object.assign({}, state, { list: list })
     case SET_PATIENT:
-      const st = Object.assign(state, action.patient)
+      const st = Object.assign({}, state, action.patient)
       return st
     default: return state
   }

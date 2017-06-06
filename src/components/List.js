@@ -10,14 +10,14 @@ class List extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: this.props.array
+      results: this.props.array || []
     }
   }
   onClick() {
     browserHistory.push('/form')
   }
   render() {
-    const results = this.state.results.map((patient, i) => {
+    const results = this.state.results[0] ?  this.state.results.map((patient, i) => {
       return (
         <div key={'patient ' + i} className='patient-list__item' >
           <div className='patient-list__left' >
@@ -41,7 +41,7 @@ class List extends Component {
           </div>
         </div>
       )
-    })
+    }) : []
     return (
       <div>
         <div className='patient-list' >
