@@ -31,7 +31,7 @@ class Login extends Component {
   render() {
     return (
       <div className='login' >
-        <div className='login__title' > Physician Sing In </div>
+        <div className='login__title' > Physician Sign In </div>
         <div className='login__box'>
           <TextInput stl='reverse' type='email' placeholder='Email' value={this.state.email} onChange={this.onChange} onKey={this.onKey} />
           <TextInput stl='reverse' type='password' placeholder='Password' value={this.state.password} onChange={this.onChange} onKey={this.onKey} />
@@ -47,4 +47,3 @@ class Login extends Component {
 }
 
 export default connect(null, { userLoginRequest })(Login);
-

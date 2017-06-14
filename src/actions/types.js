@@ -14,3 +14,4 @@ export const SET_SKU                   = 'SET_SKU'
 export const SET_SKU_SELECTED          = 'SET_SKU_SELECTED'
 export const SET_PRESCRIPTION          = 'SET_PRESCRIPTION'
 export const SET_FREQ                  = 'SET_FREQ'
+export const SET_QUERY                 = 'SET_QUERY';

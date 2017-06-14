@@ -16,6 +16,8 @@ class Service {
     return response
   }
   handleError = (error) => {
+    console.log('here');
+    console.log(error);
     switch (error.response.status) {
       case 401:
         localStorage.removeItem('token')
