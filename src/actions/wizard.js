@@ -98,7 +98,7 @@ export function getPrescription(selected) {
           payload.prescription_id = response.data.result.id
           payload.diagnosis = [selected.primary, selected.secondary]
           payload.token = token
-          service.put('/office/prescription/diagnosis', payload).then(
+          service.post('/office/prescription/diagnosis/update', payload).then(
             (response) => {
               if (response.status === 200 && response.data.result) {
                 dispatch(setDiagnosisSelected(selected))
@@ -174,7 +174,7 @@ export function submitSKU(SKU) {
     const skuId = getState().wizard.SKU.selected.item.id
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, product_sku_id: skuId }
-    service.put('/office/prescription', payload).then(
+    service.post('/office/prescription/update', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())
@@ -189,7 +189,7 @@ export function submitFreq(freq) {
     const token = getState().user.token
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, frequency: freq.quantity }
-    service.put('/office/prescription', payload).then(
+    service.post('/office/prescription/update', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())
