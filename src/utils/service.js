@@ -19,18 +19,14 @@ class Service {
     switch (error.response.status) {
       case 401:
         localStorage.removeItem('token')
-        console.log('unauthorized')
-        // this.redirectTo(document, '/login')
+        console.log('Unauthorized')
+        this.redirectTo(document, '/login')
         break;
-        case 400:
-        localStorage.removeItem('token')
-        console.log('unauthorized')
-        // this.redirectTo(document, '/login')
+      case 400:
+        console.log('400')
         break;
       default:
-        console.log('other error :', error)
-        console.log('error status code :', error.status)
-        // this.redirectTo(document, '/')
+        console.log('other')
         break;
     }
     return Promise.reject(error)
@@ -54,8 +50,8 @@ class Service {
   }
   put(path, payload) {
     return this.service.request({
-      method: 'PUT',
-      url: path,
+      method: 'POST',
+      url: path + '/update',
       responseType: 'json',
       data: payload
     })

@@ -13,6 +13,8 @@ export function userLoginRequest(userData) {
           dispatch(toggleMenu())
           browserHistory.push('/')
         }
+      }, (err) => {
+        alert('Invalid e-mail and password provided.')
       })
   }
 }
@@ -31,9 +33,9 @@ export function userLogOut(token) {
 export function verifyToken(token) {
   return dispatch => {
     console.log('verifyToken')
-    service.get('/auth/doctor?token=' + token ).then(
+    service.get('/auth/doctor?token=' + token).then(
       (response) => {
-        if (response.status === 200 && response.data.result && response.data.result.doctor ) {
+        if (response.status === 200 && response.data.result && response.data.result.doctor) {
           dispatch(setCurrentUser({
             email: response.data.result.doctor.email,
             token: token,
