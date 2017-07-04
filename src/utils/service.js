@@ -19,7 +19,7 @@ class Service {
     switch (error.response.data.error) {
       case 'auth.permission':
         localStorage.removeItem('token')
-        // this.redirectTo(document, '/login')
+        this.redirectTo(document, '/login')
         break;
       default:
         console.error('error')
