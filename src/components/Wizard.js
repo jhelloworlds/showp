@@ -6,6 +6,8 @@ import Product from './Product'
 import SKU from './SKU'
 import Freq from './Freq'
 import Order from './Order'
+import InitialSupply from './InitialSupply'
+import Dconf from './Dconf'
 import { connect } from 'react-redux'
 import './Wizard.css'
 
@@ -16,7 +18,7 @@ class Wizard extends Component {
       step: this.props.step
     }
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.setState({ step: nextProps.step })
   }
   render() {
@@ -24,16 +26,20 @@ class Wizard extends Component {
       switch (this.state.step) {
         case 1:
           return <Diagnosis />
-        case 2: 
+        case 2:
           return <Justifications />
         case 3:
           return <Product />
         case 4:
           return <SKU />
-        case 5: 
+        case 5:
           return <Freq />
         case 6:
           return <Order />
+        case 7:
+          return <InitialSupply />
+        case 8:
+          return <Dconf />
         default:
           return <CreatePatient />
       }

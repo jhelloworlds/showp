@@ -26,8 +26,8 @@ const initialState = {
 export function patient(state = initialState, action = {}) {
   switch (action.type) {
     case SET_LIST:
-      const list = Object.assign({}, state.list, { query: action.query,  array: action.array })
-      return Object.assign({}, state, { list: list })
+      const list = Object.assign({}, state.list, { query: action.list.query, array: action.list.array })
+      return Object.assign({}, state, { list })
     case SET_PATIENT:
       const st = Object.assign({}, state, action.patient)
       return st

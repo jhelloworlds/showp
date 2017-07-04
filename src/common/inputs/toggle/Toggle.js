@@ -59,7 +59,7 @@ Toggle.defaultProps = {
 Toggle.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
     justified: PropTypes.bool
   })),
   selected: PropTypes.number.isRequired,

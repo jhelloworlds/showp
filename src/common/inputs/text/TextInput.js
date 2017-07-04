@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './TextInput.css'
 
-const TextInput = ({ stl, type, label, value, placeholder, onChange, onKey, name }) => {
-  return <div className="input-group">
-    { label ? <label>{label.toUpperCase()}</label> : null }
-    <input onChange={onChange} value={value} type={type || "text"} name={name || type || "text"} className={stl || "form-item"} placeholder={placeholder} onKeyPress={onKey} />
-  </div>
-};
+class TextInput extends Component {
+  render() {
+    const { stl, type, label, value, placeholder, onChange, onKey, name } = this.props
+    return (
+      <div className="input-group">
+        {label ? <label>{label.toUpperCase()}</label> : null}
+        <input onChange={onChange} value={value} type={type || "text"} name={name || type || "text"} className={stl || "form-item"} placeholder={placeholder} onKeyPress={onKey} />
+      </div>
+    )
+  }
+}
 
 TextInput.propTypes = {
   label: PropTypes.string,
@@ -17,7 +22,7 @@ TextInput.propTypes = {
   stl: PropTypes.string,
   onChange: PropTypes.func,
   onKey: PropTypes.func,
-  name: PropTypes.string
-};
+  name: PropTypes.string,
+}
 
-export default TextInput;
+export default TextInput

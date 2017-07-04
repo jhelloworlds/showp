@@ -23,8 +23,8 @@ class Freq extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       selected: {
-        index: nextProps.freq.index,
-        quantity: nextProps.freq.quantity
+        index: nextProps.freq.selected.index,
+        quantity: nextProps.freq.selected.quantity
       }
     })
   }

@@ -9,11 +9,13 @@
   width: 100%;
   border-bottom: 1px solid #DDDDDD;
   padding: 20px 0px;
+  cursor: pointer;
 }
 .patient-list__left {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-left: 20px;
 }
 .patient-list__left__text {
   font-size: 20px;
@@ -42,6 +44,7 @@
   align-items: center;
   color: #2D333A;
   font-size: 30px;
+  margin-right: 20px;
 }
 #or {
   font-size: 18px;
@@ -54,5 +57,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0px;
 }

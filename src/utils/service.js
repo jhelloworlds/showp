@@ -16,17 +16,13 @@ class Service {
     return response
   }
   handleError = (error) => {
-    switch (error.response.status) {
-      case 401:
+    switch (error.response.data.error) {
+      case 'auth.permission':
         localStorage.removeItem('token')
-        console.log('Unauthorized')
-        this.redirectTo(document, '/login')
-        break;
-      case 400:
-        console.log('400')
+        // this.redirectTo(document, '/login')
         break;
       default:
-        console.log('other')
+        console.error('error')
         break;
     }
     return Promise.reject(error)

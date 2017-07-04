@@ -1,12 +1,19 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_DIAGNOSIS_SELECTED, SET_JUSTIFICATIONS,
-  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ, SET_LENGTH
+  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ, 
+  SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY
 } from '../actions/types'
 import service from '../utils/service'
 
 export function incrementStep() {
   return {
     type: INCREMENT_STEP,
+  }
+}
+export function setStep(index) {
+  return {
+    type: SET_STEP,
+    payload: index
   }
 }
 export function decrementStep() {
@@ -83,6 +90,13 @@ export function setLength(start, end) {
     }
   }
 }
+export function setInitialSupply(units) {
+  return {
+    type: SET_INITIAL_SUPPLY,
+    payload: units
+  }
+}
+
 export function getDiagnosisOptions() {
   return (dispatch, getState) => {
     const token = getState().user.token
@@ -214,6 +228,22 @@ export function submitLength(start, end) {
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, duration_start: start, duration_end: end }
     service.put('/office/prescription', payload).then(
+      (response) => {
+        if (response.status === 200 && response.data.result) {
+          dispatch(incrementStep())
+        }
+      }
+    )
+  }
+}
+
+export function submitInitialSupply(units) {
+  return (dispatch, getState) => {
+    dispatch(setInitialSupply(units))
+    const token = getState().user.token
+    const prescription_id = getState().wizard.prescription.id
+    const payload = { prescription_id: prescription_id, token: token, units }
+    service.post('/office/order', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())

@@ -15,7 +15,7 @@ export function searchPatient(query) {
             query: query,
             array: response.data.result
           }))
-          browserHistory.push('/list')
+          response.data.result[0] ? browserHistory.push('/list') : browserHistory.push('/form')
         }
       })
   }

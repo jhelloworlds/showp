@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { toggleMenu } from '../../actions/menu'
@@ -33,6 +34,12 @@ class Header extends Component {
   onClick() {
     this.props.decrementStep()
   }
+  componentDidMount() {
+    location.pathname === '/' && ReactDOM.findDOMNode(this.searchInput).childNodes[0].focus()
+  }
+  componentDidUpdate() {
+    location.pathname === '/' && ReactDOM.findDOMNode(this.searchInput).childNodes[0].focus()
+  }
   render() {
     const { leftIcon, text, rightIcon, toggleMenu } = this.props
     return (
@@ -42,8 +49,7 @@ class Header extends Component {
           this.isWizard() ?
           <span id='header__last-name' > {this.props.patient.last_name} </span>
           : 
-          <TextInput placeholder={text} stl='reverse header__search' type='search' value={this.state.search} onKey={this.onKey} onChange={this.onChange} />
-
+          <TextInput ref={(input)=> { this.searchInput = input }} placeholder={text} stl='reverse header__search' type='search' value={this.state.search} onKey={this.onKey} onChange={this.onChange} />
         }
         <span className='rightIcon' onClick={toggleMenu} >{rightIcon}</span>
       </div>

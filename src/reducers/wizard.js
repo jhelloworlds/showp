@@ -1,6 +1,7 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_JUSTIFICATIONS, SET_DIAGNOSIS_SELECTED,
-  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ, SET_LENGTH
+  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION,
+  SET_FREQ, SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY
 } from '../actions/types'
 import { perDay } from '../utils/perDay'
 
@@ -39,7 +40,8 @@ const initialState = {
   length: {
     start: '',
     end: ''
-  }
+  },
+  initial: 1
 }
 
 export function wizard(state = initialState, action = {}) {
@@ -48,6 +50,8 @@ export function wizard(state = initialState, action = {}) {
       return Object.assign({}, state, { step: state.step + 1 })
     case DECREMENT_STEP:
       return Object.assign({}, state, { step: state.step - 1 })
+    case SET_STEP:
+      return Object.assign({}, state, { step: action.payload })
     case SET_PRESCRIPTION:
       return Object.assign({}, state, { prescription: action.payload })
     case SET_DIAGNOSIS_OPTIONS:
@@ -84,6 +88,8 @@ export function wizard(state = initialState, action = {}) {
     case SET_LENGTH:
       const len = Object.assign({}, state.length, { start: action.payload.start, end: action.payload.end })
       return Object.assign({}, state, { length: len })
+    case SET_INITIAL_SUPPLY:
+      return Object.assign({}, state, { initial: action.payload.units })
     default: return state
   }
 }

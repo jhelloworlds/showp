@@ -7,7 +7,7 @@ import Button from '../common/button/Button'
 import { submitLength } from '../actions/wizard'
 import './Order.css'
 
-const options = [30, 90, 180, 360, 1] // last option lifetime
+const options = [30, 90, 180, 360, 35640] // last option lifetime
 
 class Order extends Component {
   constructor() {
@@ -60,7 +60,7 @@ class Order extends Component {
           <div className='freq__button' ><Button text='Next' fill onClick={this.onClick} /></div>
         </div>
       </div>
-    );
+    )
   }
 }
 

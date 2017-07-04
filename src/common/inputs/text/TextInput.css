@@ -43,14 +43,13 @@ input::placeholder {
   font-size:  16px;
   color: #fff;
   letter-spacing: 1px;
+  opacity: 0.5;
 }
 .header__search {
   font-size: 16px;
-  border-bottom: 0px;
+  border: 0px;
   line-height: 16px;
   width: inherit;
   padding: 10px 0px;
-}
-.header__search:hover {
-  border-bottom: 1px solid #00AACE;
+  opacity: 0.5;
 }

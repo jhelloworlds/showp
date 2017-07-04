@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import FaAngle from 'react-icons/lib/fa/angle-right'
 import Button from '../common/button/Button'
-import { browserHistory } from 'react-router' 
+import { browserHistory } from 'react-router'
+import { setPatient } from '../actions/patient'
 import { connect } from 'react-redux'
 import './List.css'
 
@@ -12,14 +13,23 @@ class List extends Component {
     this.state = {
       results: this.props.array || []
     }
+    this.onButton = this.onButton.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
-  onClick() {
+  onButton() {
     browserHistory.push('/form')
   }
+  onClick(i) {
+    this.props.setPatient({ patient: this.state.results[i] })
+    browserHistory.push('/existing')
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ results: nextProps.array })
+  }
   render() {
-    const results = this.state.results[0] ?  this.state.results.map((patient, i) => {
+    const results = this.state.results[0] ? this.state.results.map((patient, i) => {
       return (
-        <div key={'patient ' + i} className='patient-list__item' >
+        <div key={'patient ' + i} className='patient-list__item' onClick={() => this.onClick(i)} >
           <div className='patient-list__left' >
             <div className='patient-list__left__text' >
               {patient.first_name + ' ' + patient.last_name}
@@ -47,11 +57,11 @@ class List extends Component {
         <div className='patient-list' >
           {results}
         </div>
-        {results.lenght > 0 ? <div id='or' >
+        <div id='or' >
           or
-        </div> : null }
+        </div>
         <div id='create-patient' >
-          <Button text='Create New Patient' fill icon onClick={this.onClick} />
+          <Button text='Create New Patient' fill icon onClick={this.onButton} />
         </div>
       </div>
     )
@@ -64,4 +74,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(List)
+export default connect(mapStateToProps, { setPatient })(List)

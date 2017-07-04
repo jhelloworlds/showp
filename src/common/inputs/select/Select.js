@@ -37,7 +37,7 @@ class TextInput extends Component {
     })
     return (
       <div className='input-group' >
-        <label>{label.toUpperCase()}</label>
+        <label>{label && label.toUpperCase()}</label>
         <div className='form-item' id='small-form-item' onClick={this.toggle}>
           <span className='select__value'> {this.state.value || this.props.options[this.props.selected] || options[0]} </span> <span id='sort-icon' ><FaSort /></span>
         </div>
@@ -53,12 +53,11 @@ class TextInput extends Component {
 }
 
 TextInput.defaultProps = {
-  label: 'Select',
   options: ['Option 1', 'Option 2', 'Option 3']
 }
 
 TextInput.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   options: PropTypes.array.isRequired,
   onChange: PropTypes.func,
   selected: PropTypes.number

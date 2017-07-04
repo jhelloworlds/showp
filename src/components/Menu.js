@@ -1,9 +1,10 @@
 import React from 'react'
 import Button from '../common/button/Button'
 import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
 import './Menu.css'
 
-const Menu = ({ active = true, onClose, logOut }) => {
+const Menu = ({ active = true, onClose, logOut, user }) => {
   return (
     <div className={active ? 'menu' : 'hide'} >
       <div id="mdiv" onClick={() => onClose()}>
@@ -35,8 +36,8 @@ const Menu = ({ active = true, onClose, logOut }) => {
           Health Center Of America
         </div>
         <div id='menu__signout-box__doc' >
-          <span className='menu__signout-box__text' > Dr.Joseph R.Banks  </span>
-          <span className='menu__signout-box__text' > jbanks@hcap.org </span>
+          <span className='menu__signout-box__text' > {`${user.first_name} ${user.last_name}`}  </span>
+          <span className='menu__signout-box__text' > {user.email} </span>
           {/* TODO: Get Doctor Data either Decrypt token on Login or fetch from App.js */}
         </div>
       </div>
@@ -44,7 +45,13 @@ const Menu = ({ active = true, onClose, logOut }) => {
         <Button fill={false} text='Sign Out' onClick={logOut} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Menu;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Menu)

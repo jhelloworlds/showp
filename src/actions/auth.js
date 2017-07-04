@@ -8,8 +8,8 @@ export function userLoginRequest(userData) {
     service.post('/auth/doctor', { email: userData.email, password: userData.password }).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
-          dispatch(setCurrentUser({ email: userData.email, token: response.data.result }))
           localStorage.setItem('token', response.data.result)
+          dispatch(verifyToken(response.data.result))
           dispatch(toggleMenu())
           browserHistory.push('/')
         }
@@ -32,7 +32,6 @@ export function userLogOut(token) {
 
 export function verifyToken(token) {
   return dispatch => {
-    console.log('verifyToken')
     service.get('/auth/doctor?token=' + token).then(
       (response) => {
         if (response.status === 200 && response.data.result && response.data.result.doctor) {
