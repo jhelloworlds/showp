@@ -1,0 +1,56 @@
+.toggle-accept {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.toggle-accept .option {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  padding: 16px;
+  color: rgba(0,0,0, .8);
+}
+
+.toggle-accept .icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  flex: none;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid rgba(0,0,0, .64);
+  box-sizing: border-box;
+  margin-right: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-accept .icon.selected {
+  border-color: #00aace;
+}
+
+.toggle-accept .icon.selected::after {
+  content: "";
+  display: block;
+  background-color: #00aace;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+}
+
+.accept {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+mark {
+  background: none;
+  font-weight: bold;
+  text-decoration: underline;
+}

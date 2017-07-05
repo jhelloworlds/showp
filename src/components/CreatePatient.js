@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import TextInput from '../common/inputs/text/TextInput'
 import Button from '../common/button/Button'
 import Select from '../common/inputs/select/Select.js'
-import DatePicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import { createPatient } from '../actions/patient'
 import moment from 'moment'
@@ -43,29 +42,30 @@ class CreatePatiet extends Component {
   onClick() {
     if (this.isValid()) {
       this.props.createPatient(this.state)
+    } else {
+      alert("Please provide a first name, last name, and Date of Birth.")
     }
   }
-  handleChange(date) {
-    this.setState({ dob: date })
+  handleChange(e) {
+    const dob = moment(e.target.value).format('YYYY-MM-DD')
+    this.setState({ dob })
   }
   isValid() {
     if (!this.state.first_name || !this.state.last_name || !this.state.dob) {
-      let err = Object.assign({}, this.state.error)
+      let err = {}
       err.first_name = false
       err.last_name = false
       err.dob = false
       if (!this.state.first_name) {
         err.first_name = true
-        this.setState({ error: err })
       }
       if (!this.state.last_name) {
         err.last_name = true
-        this.setState({ error: err })
       }
       if (!this.state.dob) {
         err.dob = true
-        this.setState({ error: err })
       }
+      this.setState({ error: err })
       return false
     }
     else {
@@ -89,14 +89,7 @@ class CreatePatiet extends Component {
             {/*<TextInput label='Date of Birth' name='dob' value={this.state.dob} onChange={this.onChange} stl={this.state.error.dob ? 'form-item error' : null} />*/}
             <div className="input-group">
               <label>DATE OF BIRTH</label>
-              <DatePicker
-                selected={this.state.dob ? moment(this.state.dob) : ''}
-                onChange={this.handleChange}
-                className='form-item full-width'
-                dateFormat='DD-MM-YYYY'
-                popoverAttachment='top right'
-                popoverTargetAttachment='bottom right'
-              />
+              <input type='date' onChange={this.handleChange} value={this.state.dob} className='form-item' id='input-group__dob' />
             </div>
           </div>
         </div>

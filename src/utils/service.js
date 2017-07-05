@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { store } from '../index'
+import { finishedLoading } from '../actions/loading'
 
 class Service {
   constructor() {
@@ -16,6 +18,7 @@ class Service {
     return response
   }
   handleError = (error) => {
+    store.dispatch(finishedLoading())
     switch (error.response.data.error) {
       case 'auth.permission':
         localStorage.removeItem('token')

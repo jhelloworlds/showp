@@ -8,7 +8,6 @@ import Existing from './components/Existing'
 import Wizard from './components/Wizard'
 import isLoggedIn from './utils/auth/isLoggedIn'
 
-
 const isLogged = (nextState, replace) => {
   !isLoggedIn() && replace({ pathname: '/login' })
 }

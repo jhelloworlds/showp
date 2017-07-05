@@ -17,4 +17,6 @@ export const SET_FREQ                  = 'SET_FREQ'
 export const SET_LENGTH                = 'SET_LENGTH'
 export const SET_STEP                  = 'SET_STEP'
 export const SET_INITIAL_SUPPLY        = 'SET_INITIAL_SUPPLY'
-export const SET_QUERY                 = 'SET_QUERY';
+export const SET_QUERY                 = 'SET_QUERY'
+export const SET_LOADING               = 'SET_LOADING'
+export const FINISHED_LOADING          = 'FINISHED_LOADING'

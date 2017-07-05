@@ -1,9 +1,10 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_DIAGNOSIS_SELECTED, SET_JUSTIFICATIONS,
-  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ, 
+  SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ,
   SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY
 } from '../actions/types'
 import service from '../utils/service'
+import { setLoading, finishedLoading } from './loading'
 
 export function incrementStep() {
   return {
@@ -100,11 +101,13 @@ export function setInitialSupply(units) {
 export function getDiagnosisOptions() {
   return (dispatch, getState) => {
     const token = getState().user.token
+    dispatch(setLoading())
     service.get('/office/diagnosis?service=cath&token=' + token).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(setDiagnosisOptions(response.data.result))
         }
+        dispatch(finishedLoading())
       })
   }
 }
@@ -113,6 +116,7 @@ export function getPrescription(selected) {
     const token = getState().user.token
     const patient_id = getState().patient.patient.id
     const payload = { token: token, patient_id: patient_id }
+    dispatch(setLoading())
     service.post('/office/prescription', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
@@ -127,6 +131,7 @@ export function getPrescription(selected) {
                 dispatch(setDiagnosisSelected(selected))
                 dispatch(incrementStep())
               }
+              dispatch(finishedLoading())
             })
         }
       })
@@ -135,11 +140,13 @@ export function getPrescription(selected) {
 export function getJustifications() {
   return (dispatch, getState) => {
     const token = getState().user.token
+    dispatch(setLoading())
     service.get('/office/justification?service=cath&token=' + token).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(setJustifications(response.data.result))
         }
+        dispatch(finishedLoading())
       })
   }
 }
@@ -164,11 +171,13 @@ export function getProducts() {
     const token = getState().user.token
     let justs = getState().wizard.justifications.active
     justs = justs.join('&justification[]=')
+    dispatch(setLoading())
     service.get('/office/product?service=cath&token=' + token + '&justification[]=' + justs).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(setProducts(response.data.result))
         }
+        dispatch(finishedLoading())
       })
   }
 }
@@ -182,11 +191,13 @@ export function getSKU() {
   return (dispatch, getState) => {
     const token = getState().user.token
     let productId = getState().wizard.products.selected.item.id
+    dispatch(setLoading())
     service.get('/office/product/sku?token=' + token + '&product_id=' + productId).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(setSKU(response.data.result))
         }
+        dispatch(finishedLoading())
       })
   }
 }
@@ -197,11 +208,13 @@ export function submitSKU(SKU) {
     const skuId = getState().wizard.SKU.selected.item.id
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, product_sku_id: skuId }
+    dispatch(setLoading())
     service.post('/office/prescription/update', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())
         }
+        dispatch(finishedLoading())
       }
     )
   }
@@ -212,11 +225,13 @@ export function submitFreq(freq) {
     const token = getState().user.token
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, frequency: freq.quantity }
+    dispatch(setLoading())
     service.post('/office/prescription/update', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())
         }
+        dispatch(finishedLoading())
       }
     )
   }
@@ -227,11 +242,13 @@ export function submitLength(start, end) {
     const token = getState().user.token
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, duration_start: start, duration_end: end }
+    dispatch(setLoading())
     service.put('/office/prescription', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())
         }
+        dispatch(finishedLoading())
       }
     )
   }
@@ -243,11 +260,13 @@ export function submitInitialSupply(units) {
     const token = getState().user.token
     const prescription_id = getState().wizard.prescription.id
     const payload = { prescription_id: prescription_id, token: token, units }
+    dispatch(setLoading())
     service.post('/office/order', payload).then(
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(incrementStep())
         }
+        dispatch(finishedLoading())
       }
     )
   }

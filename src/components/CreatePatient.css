@@ -31,3 +31,14 @@
 .react-datepicker__triangle {
   left: 120.15px;
 }
+#create-patient__state #small-form-item.form-item {
+  flex: 1;
+  width: 100%;
+}
+#create-patient__gender #small-form-item.form-item {
+  flex: 1;
+  width: 100%;
+}
+#input-group__dob {
+  height: 22.40px;
+}

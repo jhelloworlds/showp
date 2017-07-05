@@ -9,7 +9,7 @@ import routes from './routes'
 import { verifyToken } from './actions/auth'
 import './index.css'
 
-const store = createStore(
+export const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk),
@@ -26,3 +26,4 @@ ReactDOM.render(
     <Router history={browserHistory} routes={routes} />
   </Provider>, document.getElementById('root')
 );
+
