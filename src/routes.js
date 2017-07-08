@@ -8,6 +8,8 @@ import Existing from './components/Existing'
 import Wizard from './components/Wizard'
 import isLoggedIn from './utils/auth/isLoggedIn'
 
+import Loading from './components/Loading'
+
 const isLogged = (nextState, replace) => {
   !isLoggedIn() && replace({ pathname: '/login' })
 }
@@ -16,8 +18,9 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={Main} onEnter={isLogged} />
     <Route path='/login' component={Login} />
+    <Route path='/loader' component={Loading} />
     <Route path='/list' component={List} onEnter={isLogged} />
     <Route path='/existing' component={Existing} onEnter={isLogged} />
     <Route path='/form' component={Wizard} onEnter={isLogged} />
   </Route>
-) 
+)
