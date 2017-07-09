@@ -10,12 +10,14 @@ const STUFF = [
   { description: 'if you have any questions go bother someone else', id: 'asdasd64das' }
 ]
 
+
 class Dconf extends Component {
   constructor(props) {
     super(props)
     this.state = {
       selectedList: [],
-      stuff: STUFF
+      stuff: STUFF,
+      signatureText: 'Draw Signature'
     }
   }
 
@@ -37,6 +39,10 @@ class Dconf extends Component {
     }
 
     this.setState({ selectedList: selectedList })
+  }
+
+  handleSignatureClick = () => {
+    this.setState({signatureText: ''})
   }
 
   render() {
@@ -79,8 +85,9 @@ class Dconf extends Component {
         <div className='justifications__list' >
           {content}
         </div>
-        <div className='pad' >
-          <SignaturePad clearButton="true"/>
+        <div className='pad' onMouseDown={this.handleSignatureClick} onTouchStart={this.handleSignatureClick} >
+          <SignaturePad ref="pad"/>
+          <span>{this.state.signatureText}</span>
         </div>
         <div id='justifications__button' className={stuff.length !== selectedList.length && 'disabled'} >
           <Button text='Confirm Signature' fill onClick={this.onButton} />

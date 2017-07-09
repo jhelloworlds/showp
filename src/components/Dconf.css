@@ -1,4 +1,23 @@
 .pad {
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+.pad canvas {
+  width: 378px;
+  height: 200px;
+  border: 1px solid #DDDDDD;
+  border-radius: 2px;
+}
+
+.pad span {
+  color: #DDDDDD;
+  font-weight: bold;
+  font-size: 18px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
