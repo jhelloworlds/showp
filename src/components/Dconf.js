@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from '../common/button/Button'
+import SignaturePad from 'react-signature-pad'
 import './Dconf.css'
 
 const STUFF = [
@@ -77,6 +78,9 @@ class Dconf extends Component {
         </div>
         <div className='justifications__list' >
           {content}
+        </div>
+        <div className='pad' >
+          <SignaturePad clearButton="true"/>
         </div>
         <div id='justifications__button' className={stuff.length !== selectedList.length && 'disabled'} >
           <Button text='Confirm Signature' fill onClick={this.onButton} />
