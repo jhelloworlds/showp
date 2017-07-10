@@ -1,7 +1,7 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_DIAGNOSIS_SELECTED, SET_JUSTIFICATIONS,
   SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ,
-  SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY
+  SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY, SET_CONFS_D, SET_CONFS
 } from '../actions/types'
 import service from '../utils/service'
 import { setLoading, finishedLoading } from './loading'
@@ -70,6 +70,19 @@ export function setSKU(skus) {
     payload: skus
   }
 }
+export function setConfs(confs, type) {
+  if (type === 'doctor') return {
+    type: SET_CONFS_D,
+    payload: confs
+  }
+  else {
+    return {
+      type: SET_CONFS,
+      payload: confs
+    }
+  }
+
+}
 export function setSKUSelected(sku) {
   return {
     type: SET_SKU_SELECTED,
@@ -106,8 +119,8 @@ export function getDiagnosisOptions() {
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(setDiagnosisOptions(response.data.result))
+          dispatch(finishedLoading())
         }
-        dispatch(finishedLoading())
       })
   }
 }
@@ -129,9 +142,9 @@ export function getPrescription(selected) {
             (response) => {
               if (response.status === 200 && response.data.result) {
                 dispatch(setDiagnosisSelected(selected))
+                dispatch(finishedLoading())
                 dispatch(incrementStep())
               }
-              dispatch(finishedLoading())
             })
         }
       })
@@ -145,8 +158,8 @@ export function getJustifications() {
       (response) => {
         if (response.status === 200 && response.data.result) {
           dispatch(setJustifications(response.data.result))
+          dispatch(finishedLoading())
         }
-        dispatch(finishedLoading())
       })
   }
 }
@@ -269,5 +282,40 @@ export function submitInitialSupply(units) {
         dispatch(finishedLoading())
       }
     )
+  }
+}
+
+export function getConfs(type) {
+  return (dispatch, getState) => {
+    const token = getState().user.token
+    dispatch(setLoading())
+    service.get('/office/confirmation?token=' + token + `&service=cath&type=${type}`).then(
+      (response) => {
+        if (response.status === 200 && response.data.result) {
+          dispatch(setConfs(response.data.result, type))
+        }
+        dispatch(finishedLoading())
+      })
+  }
+}
+
+export function submitConfs(type, signature) {
+  return (dispatch, getState) => {
+    const token = getState().user.token
+    const prescription_id = getState().wizard.prescription.id
+    const confirmations = type === 'doctor' ? getState().wizard.confsD : null
+    const payload = {
+      prescription_id,
+      token,
+      type,
+      confirmations,
+      signature
+    }
+    dispatch(setLoading())
+    service.post('/office/confirmation', payload).then(
+      (response) => {
+        dispatch(finishedLoading())
+        dispatch(incrementStep())
+      })
   }
 }

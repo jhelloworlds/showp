@@ -26,11 +26,11 @@ export function userLoginRequest(userData) {
 
 export function userLogOut(token) {
   return dispatch => {
+    browserHistory.push('/login')
+    dispatch(toggleMenu())
     service.delete('/auth/doctor?token=' + token)
     localStorage.removeItem('token')
     dispatch(setCurrentUser({}))
-    dispatch(toggleMenu())
-    browserHistory.push('/login')
     return false
   }
 }
@@ -46,7 +46,8 @@ export function verifyToken(token) {
             email: response.data.result.doctor.email,
             token: token,
             first_name: response.data.result.doctor.first_name,
-            last_name: response.data.result.doctor.last_name
+            last_name: response.data.result.doctor.last_name,
+            org: response.data.result.doctor.org
           }))
         }
       }

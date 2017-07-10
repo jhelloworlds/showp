@@ -11,7 +11,8 @@ class SKU extends Component {
       selected: {
         index: this.props.selected.index || 0,
         item: this.props.selected.item || {}
-      }
+      },
+      loading: this.props.loading || true
     }
     this.onChange = this.onChange.bind(this)
   }
@@ -23,7 +24,8 @@ class SKU extends Component {
       selected: {
         index: nextProps.selected.index,
         item: nextProps.selected.item
-      }
+      },
+      loading: nextProps.loading
     })
   }
   onChange(index) {
@@ -37,6 +39,7 @@ class SKU extends Component {
     const SKUs = SKU.map((item) => {
       return { title: item.name, subtitle: '' }
     })
+    if (this.state.loading) return <div></div>
     return (
       <div className='SKU' >
         <div className='product__header' >
@@ -53,7 +56,8 @@ const mapStateToProps = (state) => {
   return {
     product: state.wizard.products.selected.item,
     SKU: state.wizard.SKU.read,
-    selected: state.wizard.SKU.selected
+    selected: state.wizard.SKU.selected,
+    loading: state.loading.isloading
   }
 }
 

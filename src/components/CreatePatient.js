@@ -5,8 +5,10 @@ import Select from '../common/inputs/select/Select.js'
 import { connect } from 'react-redux'
 import { createPatient } from '../actions/patient'
 import moment from 'moment'
+import states from '../utils/states'
 import 'react-datepicker/dist/react-datepicker.css'
 import './CreatePatient.css'
+
 
 class CreatePatiet extends Component {
   constructor(props) {
@@ -29,12 +31,17 @@ class CreatePatiet extends Component {
         first_name: false,
         middle_name: false,
         dob: false
+      },
+      selected: {
+        gender: 0,
+        address_state: 4
       }
     }
     this.onChange = this.onChange.bind(this)
     this.onClick = this.onClick.bind(this)
     this.isValid = this.isValid.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.onSelect = this.onSelect.bind(this)
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
@@ -45,6 +52,9 @@ class CreatePatiet extends Component {
     } else {
       alert("Please provide a first name, last name, and Date of Birth.")
     }
+  }
+  onSelect(index, value, name) {
+    this.setState({ [name]: value, selected: Object.assign({}, this.state.selected, { [name]: index }) })
   }
   handleChange(e) {
     const dob = moment(e.target.value).format('YYYY-MM-DD')
@@ -89,7 +99,7 @@ class CreatePatiet extends Component {
             {/*<TextInput label='Date of Birth' name='dob' value={this.state.dob} onChange={this.onChange} stl={this.state.error.dob ? 'form-item error' : null} />*/}
             <div className="input-group">
               <label>DATE OF BIRTH</label>
-              <input type='date' onChange={this.handleChange} value={this.state.dob} className='form-item' id='input-group__dob' />
+              <input type='date' onChange={this.handleChange} value={this.state.dob} className={this.state.error.dob ? 'form-item error' : 'form-item'} id='input-group__dob' />
             </div>
           </div>
         </div>
@@ -101,7 +111,7 @@ class CreatePatiet extends Component {
             <TextInput label='City' name='address_city' value={this.state.address_city} onChange={this.onChange} />
           </div>
           <div id='create-patient__state' >
-            <Select label='state' options={['CA', 'PA']} />
+            <Select label='state' name='address_state' selected={this.state.selected.address_state} options={states} onChange={this.onSelect} />
           </div>
           <div id='create-patient__zip-code' >
             <TextInput label='Zip Code' name='address_zip' value={this.state.address_zip} onChange={this.onChange} />
@@ -109,7 +119,7 @@ class CreatePatiet extends Component {
         </div>
         <div className='create-patient__row' >
           <div id='create-patient__gender' >
-            <Select label='gender' options={['MALE', 'FEMALE']} />
+            <Select label='gender' name='gender' options={['MALE', 'FEMALE']} selected={this.state.selected.gender} onChange={this.onSelect} />
           </div>
           <div id='create-patient__phone' >
             <TextInput label='Phone' name='phone' value={this.state.phone} onChange={this.onChange} />
@@ -146,4 +156,6 @@ const mapStateToProps = (state) => {
     patient: state.patient.patient
   }
 }
+
 export default connect(mapStateToProps, { createPatient })(CreatePatiet)
+

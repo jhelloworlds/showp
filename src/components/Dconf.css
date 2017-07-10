@@ -21,3 +21,28 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.pad__left {
+  width: 150px;
+}
+.pad__right {
+  width: 100px;
+}
+.pad__center {
+  flex: 1;
+}
+.pad__center canvas{
+  width: 100%;
+}
+.bold {
+  font-weight: bold;
+}
+.pad__sub{
+  margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.pad__sub button {
+  width: 100%;
+  height: 65px;
+}
