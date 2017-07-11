@@ -13,7 +13,8 @@ class Diagnosis extends Component {
       diagnosisSelected: {
         primary: this.props.diagnosisSelected.primary || '',
         secondary: this.props.diagnosisSelected.secondary || ''
-      }
+      },
+      loading: this.props.loading || true
     }
     this.onClick = this.onClick.bind(this)
     this.onChangePrimary = this.onChangePrimary.bind(this)
@@ -29,7 +30,8 @@ class Diagnosis extends Component {
       diagnosisSelected: {
         primary: nextProps.diagnosisSelected.primary || nextProps.diagnosisOptions.primary[0].id,
         secondary: nextProps.diagnosisSelected.secondary || nextProps.diagnosisOptions.secondary[0].id
-      }
+      },
+      loading: nextProps.loading
     })
   }
   onChangePrimary(index) {
@@ -65,6 +67,7 @@ class Diagnosis extends Component {
     const secondary = !!this.state.diagnosisOptions.secondary ? this.state.diagnosisOptions.secondary.map((option) => {
       return { title: option.name, subtitle: option.code }
     }) : []
+    if (this.state.loading) return <div> </div>
     return (
       <div className='diagnosis' >
         <div id='diagnosis__title-first' className='diagnosis__title'  >
@@ -92,7 +95,8 @@ class Diagnosis extends Component {
 const mapStateToProps = (state) => {
   return {
     diagnosisOptions: state.wizard.diagnosis.options,
-    diagnosisSelected: state.wizard.diagnosis.selected
+    diagnosisSelected: state.wizard.diagnosis.selected,
+    loading: state.loading.isloading
   }
 }
 

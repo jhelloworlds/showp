@@ -11,8 +11,13 @@ class Justifications extends Component {
       justifications: {
         read: this.props.justifications.read || [],
         active: this.props.justifications.active || []
-      }
+      },
+      loading: this.props.loading || true
     }
+    
+    this.isSelected = this.isSelected.bind(this)
+    this.onClick = this.onClick.bind(this)
+    this.onButton = this.onButton.bind(this)
   }
   componentDidMount() {
     this.props.getJustifications()
@@ -22,11 +27,9 @@ class Justifications extends Component {
       justifications: {
         read: nextProps.justifications.read,
         active: nextProps.justifications.active
-      }
+      },
+      loading: nextProps.loading
     })
-    this.isSelected = this.isSelected.bind(this)
-    this.onClick = this.onClick.bind(this)
-    this.onButton = this.onButton.bind(this)
   }
   isSelected(id) {
     for (let i = 0; i < this.state.justifications.active.length; i++) {
@@ -76,6 +79,7 @@ class Justifications extends Component {
         </div>
       </div>
     })
+    if (this.state.loading) return <div> </div>
     return (
       <div className='justifications' >
         <div className='justifications__header' >
@@ -95,7 +99,8 @@ class Justifications extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    justifications: state.wizard.justifications
+    justifications: state.wizard.justifications,
+    loading: state.loading.isloading
   }
 }
 

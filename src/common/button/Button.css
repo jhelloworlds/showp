@@ -34,3 +34,8 @@
   flex: 1;
   display: none;
 }
+.disabled-button {
+  background: gray;
+  border: 0px;
+  color: #AAAAAA;
+}

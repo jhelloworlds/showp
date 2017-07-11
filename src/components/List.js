@@ -26,6 +26,12 @@ class List extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({ results: nextProps.array })
   }
+  componentWillMount() {
+    if (!this.props.array[0]) browserHistory.push('/')
+  }
+  componentWillUpdate() {
+    if (!this.props.array[0]) browserHistory.push('/')
+  }
   render() {
     const results = this.state.results[0] ? this.state.results.map((patient, i) => {
       return (
@@ -35,13 +41,13 @@ class List extends Component {
               {patient.first_name + ' ' + patient.last_name}
             </div>
             <div className='patient-list__left__date' >
-              {moment(patient.dob).calendar()}
+              {moment(patient.dob).format('MM/DD/YYYY')}
             </div>
           </div>
           <div className='patient-list__middle' >
             <div className='patient-list__middle_text' >
               <div>{patient.address_street}</div>
-              <div>{patient.address_city}</div>
+              <div>{patient.address_city ? patient.address_state ? patient.address_city + ',' + patient.address_state + ' ' : patient.address_city : patient.address_state}</div>
             </div>
           </div>
           <div className='patient-list__right' >

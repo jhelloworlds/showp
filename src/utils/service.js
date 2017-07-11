@@ -19,14 +19,19 @@ class Service {
   }
   handleError = (error) => {
     store.dispatch(finishedLoading())
-    switch (error.response.data.error) {
-      case 'auth.permission':
-        localStorage.removeItem('token')
-        this.redirectTo(document, '/login')
-        break;
-      default:
-        console.error('error')
-        break;
+    if (error.response) {
+      switch (error.response.data.error) {
+        case 'auth.permission':
+          localStorage.removeItem('token')
+          this.redirectTo(document, '/login')
+          break;
+        default:
+          console.error('error')
+          break;
+      }
+    } else {
+      localStorage.removeItem('token')
+      this.redirectTo(document, '/login')
     }
     return Promise.reject(error)
   }

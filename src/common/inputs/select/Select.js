@@ -10,14 +10,15 @@ class TextInput extends Component {
       value: '',
       selected: false,
       selectedIndex: this.props.selected || 0,
-      active: false
+      active: false,
+      name: this.props.name
     }
     this.onClick = this.onClick.bind(this)
     this.toggle = this.toggle.bind(this)
   }
   onClick(e) {
     this.setState({ selectedIndex: e.target.value, active: false, value: e.target.textContent })
-    this.props.onChange && this.props.onChange(e.target.value, this.props.options[e.target.value])
+    this.props.onChange && this.props.onChange(e.target.value, this.props.options[e.target.value], this.state.name)
   }
   toggle() {
     this.setState({ active: !this.state.active })

@@ -22,7 +22,7 @@
 }
 .input-group :focus {
   outline: none;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #00AACE;
 }
 input::placeholder {

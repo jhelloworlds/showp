@@ -33,7 +33,7 @@ const Menu = ({ active = true, onClose, logOut, user }) => {
       </div>
       <div id='menu__signout-box'>
         <div id='menu__signout-box__org' >
-          Health Center Of America
+          {user.org.name}
         </div>
         <div id='menu__signout-box__doc' >
           <span className='menu__signout-box__text' > {`${user.first_name} ${user.last_name}`}  </span>

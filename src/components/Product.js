@@ -11,7 +11,8 @@ class Product extends Component {
       selected: {
         index: this.props.selected.index || 0,
         item: this.props.selected.item || {}
-      }
+      },
+      loading: this.props.loading || true
     }
     this.onChange = this.onChange.bind(this)
   }
@@ -23,7 +24,8 @@ class Product extends Component {
       selected: {
         index: nextProps.selected.index,
         item: nextProps.selected.item
-      }
+      },
+      loading: nextProps.loading
     })
   }
   onChange(index) {
@@ -42,6 +44,7 @@ class Product extends Component {
     const prods = products.map((prod) => {
       return { title: prod.name, subtitle: prod.code, justified: prod.justified }
     })
+    if (this.state.loading) return <div> </div>
     return (
       <div className='product' >
         <div className='product__header' >
@@ -59,7 +62,8 @@ const mapStateToProps = (state) => {
     patient: state.patient.patient,
     diagnosis: state.wizard.diagnosis,
     products: state.wizard.products.read,
-    selected: state.wizard.products.selected
+    selected: state.wizard.products.selected,
+    loading: state.loading.isloading
   }
 }
 

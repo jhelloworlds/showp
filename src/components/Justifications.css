@@ -26,6 +26,7 @@
 }
 .justifications__list__item {
   display: flex;
+  align-items: center;
   border-bottom: 1px solid #DDDDDD;
   padding: 20px 0px;
   cursor: pointer;
@@ -36,7 +37,7 @@
   align-items: center;
 }
 .justifications__list__right {
-  min-height: 48px;
+  height: 48px;
   width: 100px;
   background: url('/assets/svg/list-right.svg') no-repeat center;
 }
