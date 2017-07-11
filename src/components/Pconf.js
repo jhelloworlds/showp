@@ -4,9 +4,9 @@ import SignaturePad from 'react-signature-pad'
 import { connect } from 'react-redux'
 import { getConfs, submitConfs } from '../actions/wizard'
 import moment from 'moment'
-import './Dconf.css'
+import './Pconf.css'
 
-class Dconf extends Component {
+class Pconf extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,10 +44,10 @@ class Dconf extends Component {
   onButton() {
     const pad = this.pad
     const signature = pad.toDataURL()
-    this.props.submitConfs('doctor', signature)
+    this.props.submitConfs('patient', signature)
   }
   componentDidMount() {
-    this.props.getConfs('doctor')
+    this.props.getConfs('patient')
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -90,8 +90,8 @@ class Dconf extends Component {
     return (
       <div className='justifications' >
         <div className='justifications__header' >
-          <span className='justifications__header__title' >Doctor Confirmation</span>
-          <div className='justifications__header__subtitle' >Please tap to each to confirm patient education</div>
+          <span className='justifications__header__title' >Patient Confirmation</span>
+          <div className='justifications__header__subtitle' >Please tap each to confirm you understand the following</div>
         </div>
         <div className='justifications__list' >
           {content}
@@ -107,7 +107,7 @@ class Dconf extends Component {
         <div className='pad__sub'>
           <div className='pad__left' ></div>
           <div className='pad__center' >
-            <div>Name <span className='bold' >{this.props.user.first_name}</span></div>
+            <div>Name <span className='bold' >{this.props.patient.first_name}</span></div>
             <div>Date <span className='bold' >{moment().format('MMMM DD, YYYY')}</span></div>
           </div>
           <div className='pad__right' ></div>
@@ -126,9 +126,9 @@ class Dconf extends Component {
 const mapStateToProps = (state) => {
   return {
     confs: [...state.wizard.confsD.verbal, ...state.wizard.confsD.confirm],
-    user: state.user
+    patient: state.patient.patient
   }
 }
 
-export default connect(mapStateToProps, { getConfs, submitConfs })(Dconf)
+export default connect(mapStateToProps, { getConfs, submitConfs })(Pconf)
 

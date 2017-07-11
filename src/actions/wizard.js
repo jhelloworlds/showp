@@ -1,7 +1,7 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_DIAGNOSIS_SELECTED, SET_JUSTIFICATIONS,
   SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION, SET_FREQ,
-  SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY, SET_CONFS_D, SET_CONFS
+  SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY, SET_CONFS_D, SET_CONFS_P
 } from '../actions/types'
 import service from '../utils/service'
 import { setLoading, finishedLoading } from './loading'
@@ -77,7 +77,7 @@ export function setConfs(confs, type) {
   }
   else {
     return {
-      type: SET_CONFS,
+      type: SET_CONFS_P,
       payload: confs
     }
   }
@@ -303,7 +303,7 @@ export function submitConfs(type, signature) {
   return (dispatch, getState) => {
     const token = getState().user.token
     const prescription_id = getState().wizard.prescription.id
-    const confirmations = type === 'doctor' ? getState().wizard.confsD : null
+    const confirmations = type === 'doctor' ? getState().wizard.confsD : getState().wizard.confsP
     const payload = {
       prescription_id,
       token,

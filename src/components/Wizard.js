@@ -8,6 +8,7 @@ import Freq from './Freq'
 import Order from './Order'
 import InitialSupply from './InitialSupply'
 import Dconf from './Dconf'
+import Pconf from './Pconf'
 import { connect } from 'react-redux'
 import './Wizard.css'
 
@@ -40,6 +41,8 @@ class Wizard extends Component {
           return <InitialSupply />
         case 8:
           return <Dconf />
+        case 9:
+          return <Pconf />
         default:
           return <CreatePatient />
       }
