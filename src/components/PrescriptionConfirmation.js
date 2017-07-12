@@ -3,6 +3,7 @@ import Button from '../common/button/Button'
 import SignaturePad from 'react-signature-pad'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import { incrementStep } from '../actions/wizard'
 import './PrescriptionConfirmation.css'
 
 class PrescriptionConfirmation extends Component {
@@ -20,8 +21,8 @@ class PrescriptionConfirmation extends Component {
     this.setState({ signatureText: '' })
   }
 
-  onButtonClick() {
-    // TODO incremet step
+  onButtonClick = () => {
+    this.props.incrementStep()
   }
 
   render() {
@@ -143,5 +144,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PrescriptionConfirmation)
+export default connect(mapStateToProps, { incrementStep })(PrescriptionConfirmation)
 
