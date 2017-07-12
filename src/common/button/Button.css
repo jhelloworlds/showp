@@ -36,7 +36,9 @@
   display: none;
 }
 .disabled-button {
-  background: gray;
+  background: #DDDDDD;
   border: 0px;
   color: #AAAAAA;
+  font-size: 18px;
+  font-weight: 700;
 }

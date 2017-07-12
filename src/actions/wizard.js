@@ -165,18 +165,17 @@ export function getJustifications() {
 }
 export function submitJustifications(justifications) {
   return (dispatch, getState) => {
-    // const token = getState().user.token
-    // const just = justifications
-    // const payload = { token: token, justification: just }
-    // service.put('/office/prescription', payload).then(
-    //   (response) => {
-    //     if (response.status === 200 && response.data.result) {
-    //       dispatch(setActiveJustifications(justifications))
-    //       dispatch(incrementStep())
-    //     }
-    //   })
-    dispatch(setActiveJustifications(justifications))
-    dispatch(incrementStep())
+    const token = getState().user.token
+    const just = justifications
+    const prescription_id = getState().wizard.prescription.id
+    const payload = { token: token, justification: just, prescription_id }
+    service.post('/office/prescription/update', payload).then(
+      (response) => {
+        if (response.status === 200 && response.data.result) {
+          dispatch(setActiveJustifications(justifications))
+          dispatch(incrementStep())
+        }
+      })
   }
 }
 export function getProducts() {

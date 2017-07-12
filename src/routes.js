@@ -7,7 +7,6 @@ import List from './components/List'
 import Existing from './components/Existing'
 import Wizard from './components/Wizard'
 import isLoggedIn from './utils/auth/isLoggedIn'
-
 import Dconf from './components/Dconf'
 
 const isLogged = (nextState, replace) => {

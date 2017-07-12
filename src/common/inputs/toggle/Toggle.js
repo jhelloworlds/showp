@@ -21,7 +21,7 @@ class Toggle extends Component {
   render() {
     const { options, onChange } = this.props
     const boxes = options.map((box, i) => {
-      if (box.justified === undefined || box.justified === true) {
+      if (box.disabled === undefined || box.disabled === false) {
         return <div key={'box' + i} onClick={() => { this.onClick(i); onChange(i) }} className={i === this.state.selected ? 'toggle-box chosen' : 'toggle-box'} >
           <div className='title-holder'>
             <div className='title-holder__title'>{box.title}</div>
@@ -60,7 +60,7 @@ Toggle.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    justified: PropTypes.bool
+    disabled: PropTypes.bool
   })),
   selected: PropTypes.number.isRequired,
   onChange: PropTypes.func
