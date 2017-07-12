@@ -2,16 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
   border-bottom: 1px solid #DDDDDD;
-  padding-bottom: 35px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 .product__header__title {
   font-size: 20px;
   color: #2D333A;
   padding-bottom: 12px;
+  font-weight: 700;
 }
 .product__header__subtitle {
   font-size: 14px;
   color: #2D333A;
+  font-weight: 500;
 }

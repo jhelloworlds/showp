@@ -89,11 +89,11 @@ class CreatePatiet extends Component {
           <div id='create-patient__first-name' >
             <TextInput label='First Name' name='first_name' value={this.state.first_name} onChange={this.onChange} stl={this.state.error.first_name ? 'form-item error' : null} />
           </div>
-          <div id='create-patient__last-name' >
-            <TextInput label='Last Name' name='last_name' value={this.state.last_name} onChange={this.onChange} stl={this.state.error.last_name ? 'form-item error' : null} />
-          </div>
           <div id='create-patient__middle-name' >
             <TextInput label='Middle Name' name='middle_name' value={this.state.middle_name} onChange={this.onChange} />
+          </div>
+          <div id='create-patient__last-name' >
+            <TextInput label='Last Name' name='last_name' value={this.state.last_name} onChange={this.onChange} stl={this.state.error.last_name ? 'form-item error' : null} />
           </div>
           <div id='create-patient__dob' >
             {/*<TextInput label='Date of Birth' name='dob' value={this.state.dob} onChange={this.onChange} stl={this.state.error.dob ? 'form-item error' : null} />*/}

@@ -8,6 +8,7 @@
   font-size: 14px;
   color: #5B6672;
   letter-spacing: 1.17px;
+  font-weight: 500;
 }
 .form-item {
   display: flex;
@@ -16,9 +17,14 @@
   padding: 20px 0px;
   font-size: 20px;
   color: #2D333A;
+  font-weight: 500;
 }
 .error {
   border-bottom: 1px solid red;
+}
+.input-group  ul {
+  font-size: 20px;
+  font-weight: 500;
 }
 .input-group :focus {
   outline: none;
@@ -38,6 +44,7 @@ input::placeholder {
   padding: 20px 0px;
   font-size: 20px;
   color: #fff;
+  font-weight: 500;
 }
 .reverse::placeholder {
   font-size:  16px;

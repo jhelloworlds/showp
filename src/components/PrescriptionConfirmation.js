@@ -44,7 +44,7 @@ class PrescriptionConfirmation extends Component {
     })()
     return (
       <div className='justifications' >
-        <div className='justifications__header' >
+        <div className='product__header' >
           <span className='justifications__header__title' >Prescription Confirmation</span>
           <div className='justifications__header__subtitle' >Please confirm the prescription below and sign</div>
         </div>

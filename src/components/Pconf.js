@@ -79,14 +79,16 @@ class Pconf extends Component {
           </div>
           <div className={this.isSelected(item.id) ?
             'justifications__list__right active' : 'justifications__list__right'
-          } ></div>
+          } >
+            <div className='justifications__list__right__icon' ></div>
+          </div>
         </div>
       )
     })
 
     if (confs.length < 1) {
-       return <div></div>
-     }
+      return <div></div>
+    }
     return (
       <div className='justifications' >
         <div className='justifications__header' >
@@ -107,8 +109,8 @@ class Pconf extends Component {
         <div className='pad__sub'>
           <div className='pad__left' ></div>
           <div className='pad__center' >
-            <div>Name <span className='bold' >{this.props.patient.first_name}</span></div>
-            <div>Date <span className='bold' >{moment().format('MMMM DD, YYYY')}</span></div>
+             <div className='signature-pad__info'><div className='singature-pad__info__left'>Name</div> <div className='bold singature-pad__info__right' >{this.props.patient.first_name}</div></div>
+            <div className='signature-pad__info'><div className='singature-pad__info__left'>Date</div> <div className='bold singature-pad__info__right' >{moment().format('MMMM DD, YYYY')}</div></div>
           </div>
           <div className='pad__right' ></div>
         </div>

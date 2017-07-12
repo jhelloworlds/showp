@@ -52,3 +52,9 @@
   margin-top: 20px;
   color: #DDDDDD;
 }
+.title-holder__title {
+  font-weight: 700;
+}
+.title-holder__subtitle {
+  font-weight: 500;
+}

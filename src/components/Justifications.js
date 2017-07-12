@@ -14,7 +14,7 @@ class Justifications extends Component {
       },
       loading: this.props.loading || true
     }
-    
+
     this.isSelected = this.isSelected.bind(this)
     this.onClick = this.onClick.bind(this)
     this.onButton = this.onButton.bind(this)
@@ -44,7 +44,7 @@ class Justifications extends Component {
         if (this.state.justifications.active[i] === id) index = i;
       }
       const arr = [...this.state.justifications.active]
-      
+
       arr.splice(index, 1)
       const just = Object.assign({}, this.state.justifications, { active: arr })
       this.setState({
@@ -58,7 +58,7 @@ class Justifications extends Component {
       })
     }
   }
-  onButton(){
+  onButton() {
     this.props.submitJustifications(this.state.justifications.active)
   }
   render() {
@@ -76,6 +76,7 @@ class Justifications extends Component {
           {just.description}
         </div>
         <div className={selected ? 'justifications__list__right active' : 'justifications__list__right'} >
+          <div className='justifications__list__right__icon' ></div>
         </div>
       </div>
     })
