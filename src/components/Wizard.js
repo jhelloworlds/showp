@@ -9,6 +9,7 @@ import Order from './Order'
 import InitialSupply from './InitialSupply'
 import Dconf from './Dconf'
 import Pconf from './Pconf'
+import Final from './Final'
 import PrescriptionConfirmation from './PrescriptionConfirmation'
 import { connect } from 'react-redux'
 import './Wizard.css'
@@ -46,6 +47,8 @@ class Wizard extends Component {
           return <Pconf />
         case 10:
           return <PrescriptionConfirmation />
+        case 11: 
+          return <Final />
         default:
           return <CreatePatient />
       }
