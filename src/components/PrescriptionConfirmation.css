@@ -1,0 +1,33 @@
+.visit__info,
+.product__diagnoses {
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 20px;
+  margin-bottom: 20px; 
+}
+
+.info {
+  justify-content: space-between;
+  display: flex;
+}
+
+.info > div {
+  flex: 1;
+}
+
+.header__sm {
+  margin: 20px 0px;
+}
+
+.txt__light {
+  color: #DDDDDD;
+}
+
+.txt__dark {
+  color: #2D333A;
+}
+
+.info,
+.header__sm,
+.product {
+  padding: 0 20px;
+}
