@@ -11,7 +11,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /*width: 337px;*/
   flex: 0 0 48%;
   margin-right: auto;
   height: 143px;
@@ -43,12 +42,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /*width: 337px;*/
   flex: 0 0 48%;
   margin-right: auto;
   height: 143px;
   border: 1px solid #DDDDDD;
-  cursor: pointer;
+  cursor: default;
   margin-top: 20px;
-  color: #DDDDDD;
+}
+.title-holder__title {
+  font-weight: 700;
+}
+.title-holder__subtitle {
+  font-weight: 500;
+}
+.disabled .title-holder__subtitle, .disabled .title-holder__title{
+  color: #AAAAAA;
 }

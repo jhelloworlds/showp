@@ -42,7 +42,7 @@ class Product extends Component {
       if (one.id === diagnosis.selected.primary) diag = one.code
     })
     const prods = products.map((prod) => {
-      return { title: prod.name, subtitle: prod.code, justified: prod.justified }
+      return { title: prod.name, subtitle: prod.code, disabled: !prod.justified }
     })
     if (this.state.loading) return <div> </div>
     return (

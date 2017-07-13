@@ -1,7 +1,7 @@
 import {
   INCREMENT_STEP, DECREMENT_STEP, SET_DIAGNOSIS_OPTIONS, SET_JUSTIFICATIONS, SET_DIAGNOSIS_SELECTED,
   SET_ACTIVE_JUSTIFICATIONS, SET_PRODUCTS, SET_PRODUCTS_SELECTED, SET_SKU, SET_SKU_SELECTED, SET_PRESCRIPTION,
-  SET_FREQ, SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY, SET_CONFS_D
+  SET_FREQ, SET_LENGTH, SET_STEP, SET_INITIAL_SUPPLY, SET_CONFS_D, SET_CONFS_P
 } from '../actions/types'
 import { perDay } from '../utils/perDay'
 
@@ -43,6 +43,10 @@ const initialState = {
   },
   initial: 1,
   confsD: {
+    verbal: [],
+    confirm: []
+  },
+  confsP: {
     verbal: [],
     confirm: []
   }
@@ -94,8 +98,10 @@ export function wizard(state = initialState, action = {}) {
       return Object.assign({}, state, { length: len })
     case SET_INITIAL_SUPPLY:
       return Object.assign({}, state, { initial: action.payload.units })
-    case SET_CONFS_D: 
+    case SET_CONFS_D:
       return Object.assign({}, state, { confsD: action.payload })
+    case SET_CONFS_P:
+      return Object.assign({}, state, { confsP: action.payload })
     default: return state
   }
 }

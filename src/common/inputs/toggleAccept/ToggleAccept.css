@@ -9,7 +9,7 @@
   text-align: left;
   align-items: center;
   padding: 16px;
-  color: rgba(0,0,0, .8);
+  color: #AAA;
 }
 
 .toggle-accept .icon {
@@ -19,7 +19,7 @@
   flex: none;
   border-radius: 50%;
   background: none;
-  border: 1px solid rgba(0,0,0, .64);
+  border: 1px solid #AAA;
   box-sizing: border-box;
   margin-right: 16px;
   cursor: pointer;
@@ -47,6 +47,8 @@
   justify-content: flex-start;
   align-items: center;
   padding: 20px 0px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 mark {

@@ -34,7 +34,7 @@
   width: 100%;
 }
 .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 .pad__sub{
   margin: 20px 0px;
@@ -45,4 +45,16 @@
 .pad__sub button {
   width: 100%;
   height: 65px;
+}
+.signature-pad__info {
+  display: flex;
+}
+.singature-pad__info__left{
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+}
+.singature-pad__info__right{
+  font-size: 14px;
+  flex: 5;
 }

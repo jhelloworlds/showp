@@ -1,0 +1,65 @@
+.visit__info,
+.product-diagnoses__container {
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 20px;
+  margin-bottom: 20px; 
+}
+
+.info {
+  justify-content: space-between;
+  display: flex;
+}
+
+.info > div {
+  flex: 1;
+}
+
+.header__sm {
+  color: #2c333a;
+  font-size: 16.0px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+
+.txt__light {
+  color: #DDDDDD;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.txt__dark {
+  color: #2D333A;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.info,
+.header__sm,
+.product-diagnoeses {
+  padding: 0 20px;
+}
+.left, .right, .product-diagnoses{
+  display: flex;
+  justify-content: flex-start;
+}
+.left__title {
+  text-align: right;
+  flex: 1;
+}
+.left__title div {
+  margin-bottom: 10px;
+}
+.left__value {
+  flex: 3;
+  margin-left: 20px;
+}
+.left__value div {
+  margin-bottom: 10px;
+}
+.product-diagnoses .left__value {
+  flex: 7
+}

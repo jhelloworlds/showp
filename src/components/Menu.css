@@ -37,6 +37,8 @@
   text-align: center;
   padding-top: 20px;
   color: #fff;
+  line-height: 22px;
+  font-weight: 500;
 }
 #menu__icons-box__box__middle {
   border-left: 1px solid #5B6672;
@@ -61,6 +63,7 @@
   font-size: 18px;
   color: #5A6470;
   padding-bottom: 20px;
+  font-weight: 500;
 }
 #menu__signout-box__doc {
   font-size: 14px;
@@ -71,11 +74,15 @@
 .menu__signout-box__text {
   padding-bottom: 5px;
   text-align: center;
+  font-weight: 500;
 }
 #menu__button button.button {
   border: 1px solid #fff;
   color: #fff;
-  margin-top: 20px;
+  margin-top: 30px;
+  padding: 15px 0px;
+  font-size: 14px;
+  font-weight: 500;
 }
 #mdiv {
   position: fixed;
