@@ -42,13 +42,8 @@ export function verifyToken(token) {
       (response) => {
         dispatch(finishedLoading())
         if (response.status === 200 && response.data.result && response.data.result.doctor) {
-          dispatch(setCurrentUser({
-            email: response.data.result.doctor.email,
-            token: token,
-            first_name: response.data.result.doctor.first_name,
-            last_name: response.data.result.doctor.last_name,
-            org: response.data.result.doctor.org
-          }))
+          response.data.result.doctor.token = token
+          dispatch(setCurrentUser(response.data.result.doctor))
         }
       }
     )

@@ -7,7 +7,7 @@
   font-size: 16px;
   letter-spacing: 1px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 500;
 }
 .fill {
   background: #00AACE;
@@ -40,5 +40,5 @@
   border: 0px;
   color: #AAAAAA;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 }

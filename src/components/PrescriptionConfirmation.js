@@ -4,6 +4,7 @@ import SignaturePad from 'react-signature-pad'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { incrementStep } from '../actions/wizard'
+import { setPatient } from '../actions/patient'
 import './PrescriptionConfirmation.css'
 
 class PrescriptionConfirmation extends Component {
@@ -22,6 +23,27 @@ class PrescriptionConfirmation extends Component {
   }
 
   onButtonClick = () => {
+    this.props.setPatient({
+      list: {
+        query: '',
+        array: []
+      },
+      patient: {
+        first_name: null,
+        middle_name: null,
+        last_name: null,
+        dob: null,
+        address_street: null,
+        address_apt: null,
+        address_city: null,
+        address_state: null,
+        address_zip: null,
+        address_country: null,
+        gender: null,
+        phone: null,
+        email: null
+      }
+    })
     this.props.incrementStep()
   }
 
@@ -65,7 +87,7 @@ class PrescriptionConfirmation extends Component {
                 <div className='txt__dark'>{this.props.user.org.dmepos}</div>
                 <div className='txt__dark'>{this.props.user.org.npi}</div>
                 <div className='txt__dark'>{this.props.user.first_name} {this.props.user.last_name}</div>
-                <div className='txt__dark'></div>
+                <div className='txt__dark'>{this.props.user.npi}</div>
               </div>
             </div>
 
@@ -98,7 +120,7 @@ class PrescriptionConfirmation extends Component {
               <div className='txt__light'>Start Date</div>
             </div>
             <div className='left__value'>
-              <div className='txt__dark'>{this.props.product.name}</div>
+              <div className='txt__dark'>{this.props.product.item.name}</div>
               <div className='txt__dark'>{this.props.diagnosis.primary}<br />{this.props.diagnosis.secondary}</div>
               <div className='txt__dark'>{this.props.frequency} Per Day</div>
               <div className='txt__dark'>{duration}</div>
@@ -144,5 +166,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { incrementStep })(PrescriptionConfirmation)
+export default connect(mapStateToProps, { incrementStep, setPatient })(PrescriptionConfirmation)
 

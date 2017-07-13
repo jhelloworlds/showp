@@ -98,6 +98,15 @@ class Pconf extends Component {
         <div className='justifications__list' >
           {content}
         </div>
+        <div className='pad'>
+          <div className='pad__left' ></div>
+          <div className='pad__center' >
+            <div className='justifications__confirm-text'>
+              I, {this.props.patient.first_name + ' ' + this.props.patient.last_name}, acknowledge the receipt of the starter kit, the receipt of the product referenced above, I understand the statements above and have indicated so by checking above.
+            </div>
+          </div>
+          <div className='pad__right' ></div>
+        </div>
         <div className='pad' onMouseDown={this.handleSignatureClick} onTouchStart={this.handleSignatureClick} >
           <div className='pad__left' ></div>
           <div className='pad__center' >

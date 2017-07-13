@@ -21,10 +21,10 @@ class CreatePatiet extends Component {
       address_street: this.props.patient.address_street || '',
       address_apt: this.props.patient.address_apt || '',
       address_city: this.props.patient.address_city || '',
-      address_state: this.props.patient.address_state || '',
+      address_state: this.props.patient.address_state || 'CA',
       address_zip: this.props.patient.address_zip || '',
       address_country: this.props.patient.address_country || '',
-      gender: this.props.patient.gender || '',
+      gender: this.props.patient.gender || 'MALE',
       phone: this.props.patient.phone || '',
       email: this.props.patient.email || '',
       error: {

@@ -57,7 +57,7 @@ class Dconf extends Component {
   render() {
     const { confs, selectedList } = this.state
     let firstOccurance = true // only show arrow if it's first occurance
-
+    const { user, patient } = this.props
     let content = confs.map((item, index) => {
       let showDiv = false
 
@@ -98,6 +98,15 @@ class Dconf extends Component {
         <div className='justifications__list' >
           {content}
         </div>
+        <div className='pad'>
+          <div className='pad__left' ></div>
+          <div className='pad__center' >
+            <div className='justifications__confirm-text'>
+              On behalf of {user.org.name}, certify that I personally performed all the duties and personally instructed {patient.first_name + ' ' + patient.last_name} on the information above.
+            </div>
+          </div>
+          <div className='pad__right' ></div>
+        </div>
         <div className='pad' onMouseDown={this.handleSignatureClick} onTouchStart={this.handleSignatureClick} >
           <div className='pad__left' ></div>
           <div className='pad__center' >
@@ -128,7 +137,8 @@ class Dconf extends Component {
 const mapStateToProps = (state) => {
   return {
     confs: [...state.wizard.confsD.verbal, ...state.wizard.confsD.confirm],
-    user: state.user
+    user: state.user,
+    patient: state.patient.patient
   }
 }
 

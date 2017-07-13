@@ -8,27 +8,29 @@
     src: url("/assets/fonts/averta-regular.woff") format('woff');
     font-weight: 500;
 }
-@font-face {
+/* @font-face {
     font-family: "averta";
     src: url("/assets/fonts/averta-bold.woff") format('woff');
     font-weight: 800;
-}
+} */
 @font-face {
     font-family: "averta";
     src: url("/assets/fonts/averta-medium.woff") format('woff');
     font-weight: 700;
 }
-@font-face {
+/* @font-face {
     font-family: "averta";
     src: url("/assets/fonts/averta-black.woff") format('woff');
     font-weight: 900;
-}
+} */
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   font-family: 'averta', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 #root {
   height: 100%;

@@ -26,7 +26,8 @@ export function searchPatient(query) {
 export function createPatient(patient) {
   return (dispatch, getState) => {
     const token = getState().user.token
-    const payload = Object.assign({}, patient, { token: token }, { dob: moment(patient.dob).format('MM-DD-YYYY') })
+    const gender = patient.gender === 'MALE' ? 'm' : 'f'
+    const payload = Object.assign({}, patient, { token: token }, { dob: moment(patient.dob).format('MM-DD-YYYY'), gender })
     dispatch(setLoading())
     service.post('/office/patient', payload).then(
       (response) => {
